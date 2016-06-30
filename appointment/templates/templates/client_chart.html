@@ -1,0 +1,352 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Elite Health| Client Sales</title>
+<script type="text/javascript">
+window.onload = function () {
+
+    var gross =[];
+    {% for request in sales_lead %}
+        gross.push({label: '{{request.lead}}', y: {{request.gross.sales}}});
+    {% endfor %}
+
+    var cash =[];
+    {% for request in sales_lead %}
+        cash.push({label: '{{request.lead}}', y: {{request.cash.cash}}});
+    {% endfor %}
+
+    var eft =[];
+    {% for request in sales_lead %}
+        eft.push({label: '{{request.lead}}', y: {{request.eft.eft}}});
+    {% endfor %}
+
+
+    var trainer_gross =[];
+    {% for request in sales_trainer %}
+        trainer_gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
+    {% endfor %}
+
+    var trainer_cash =[];
+    {% for request in sales_trainer %}
+        trainer_cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
+    {% endfor %}
+
+    var trainer_eft =[];
+    {% for request in sales_trainer %}
+        trainer_eft.push({label: '{{request.trainer}}', y: {{request.eft.eft}}});
+    {% endfor %}
+
+
+
+    var program_gross =[];
+    {% for request in sales_program %}
+        program_gross.push({y: {{request.gross}}, legendText: '{{request.program}}', exploded: true, label: '{{request.program}}' });
+    {% endfor %}
+
+    var client_gross =[];
+    {% for request in sales_client %}
+        client_gross.push({y: {{request.gross.sales}}, label: '{{request.client}}' });
+    {% endfor %}
+
+
+var chart1 = new CanvasJS.Chart("chartContainer1",
+    {
+            animationEnabled: true,
+			toolTip: {
+				shared: true
+			},
+    		axisX:{
+            labelMaxWidth: 160,
+            labelWrap: true,
+            labelFontColor: "black",
+            labelFontWeight: "bold",
+            labelFontSize: 12
+        },
+			axisY: {
+				title: "USD"
+			},
+			data: [
+			{
+				type: "column",
+				name: "Gross Sales",
+                color: "#C1E1A6",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				legendText: "Gross Sales",
+				showInLegend: true,
+				dataPoints: gross
+			},
+			{
+				type: "column",
+                color: "gold",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				name: "Cash",
+				legendText: "Cash",
+				showInLegend: true,
+				dataPoints: cash
+			},
+			{
+				type: "column",
+                color: "#558C89",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				name: "EFT",
+				legendText: "EFT",
+				showInLegend: true,
+				dataPoints: eft
+			}
+
+			]
+        });
+
+    chart1.render();
+
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+
+            animationEnabled: true,
+			toolTip: {
+				shared: true
+			},
+    		axisX:{
+            labelMaxWidth: 160,
+            labelWrap: true,
+            labelFontColor: "black",
+            labelFontWeight: "bold",
+            labelFontSize: 12
+        },
+			axisY: {
+				title: "USD"
+			},
+			data: [
+			{
+				type: "column",
+				name: "Gross Sales",
+                color: "#C1E1A6",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				legendText: "Gross Sales",
+				showInLegend: true,
+				dataPoints: trainer_gross
+			},
+			{
+				type: "column",
+                color: "gold",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				name: "Cash",
+				legendText: "Cash",
+				showInLegend: true,
+				dataPoints: trainer_cash
+			},
+			{
+				type: "column",
+                color: "#558C89",
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+				name: "EFT",
+				legendText: "EFT",
+				showInLegend: true,
+				dataPoints: trainer_eft
+			}
+
+			]
+        });
+
+chart2.render();
+
+
+var chart3 = new CanvasJS.Chart("chartContainer3",
+	{
+		exportFileName: "Pie Chart",
+		exportEnabled: true,
+        animationEnabled: true,
+		legend:{
+			verticalAlign: "bottom",
+			horizontalAlign: "center"
+		},
+		data: [
+		{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{legendText}: <strong>{y}%</strong>",
+			indexLabel: "{label} {y}%",
+			dataPoints: program_gross
+	}
+	]
+	});
+
+chart3.render();
+
+var chart4 = new CanvasJS.Chart("chartContainer4",
+{
+                animationEnabled: true,
+		data: [
+		{
+			type: "doughnut",
+			startAngle:20,
+			toolTipContent: "{label}: {y} - <strong>#percent%</strong>",
+			indexLabel: "{label} #percent%",
+			dataPoints: client_gross
+		}
+		]
+	});
+chart4.render();
+
+
+     }
+</script>
+
+
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static 'vendors/google-code-prettify/bin/prettify.min.css' %}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{% static 'vendors/select2/dist/css/select2.min.css'%}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{% static 'vendors/switchery/dist/switchery.min.css' %}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{% static 'vendors/starrr/dist/starrr.css' %}" rel="stylesheet">
+    <link href="{% static 'css/freelancer.css' %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      {% include 'templates/navbar.html'  %}
+        <div class="right_col" role="main">
+          <div class="">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                     <i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i>  <h6 style="color: red"> Change Reporting Date</h6>
+
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
+                      {% for request in list_of_slicer %}
+                    <li> <a href="{% url 'client_chart' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
+                      {% endfor %}
+                  </ul>
+                </li>
+                  </ul>
+          </div>
+          <div class="">
+            <div class="clearfix">
+                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sales by lead source</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer1" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sales by Trainor/Sales Person</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer2" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Gross Sale by Sold Programs </h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer3" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Gross Sale by Client</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- FastClick -->
+    <script src="{% static 'vendors/fastclick/lib/fastclick.js' %}"></script>
+    <!-- NProgress -->
+    <script src="{% static 'vendors/nprogress/nprogress.js' %}"></script>
+    <!-- Chart.js -->
+    <script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{% static 'build/js/custom.min.js' %}"></script>
+
+    <!-- Chart.js -->
+
+
+    <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
+
+
+
+    <!-- /Chart.js -->
+  </body>
+</html>
