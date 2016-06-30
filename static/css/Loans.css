@@ -1,0 +1,120 @@
+.page-header {
+    margin-top: 5px;
+    font: "Times Armenian";
+}
+
+.table-user {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90%;
+
+    padding:5px;
+	align-items: left;
+	box-shadow: 5px 5px 5px #888888;
+	border: 5px solid    lightgrey;
+    background: lightgoldenrodyellow;
+}
+.th_4 {
+    text-align: right;
+    font-size: 11pt;
+    color: indianred;
+
+}
+
+
+
+
+.th_3 {
+    text-align: center;
+    font-size: small;
+    color: #5b80b2;
+    margin-left: 65%;
+}
+
+.h6 {
+    text-align: center;
+    font-size: medium;
+    color: green;
+    margin-left: 65%;
+}
+
+
+.table-head {
+    margin-left: 5px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    width: 90%;
+    padding:5px;
+	align-items: center;
+	box-shadow: 5px 5px 5px #888888;
+	border: 5px solid    lightgrey;
+    background: lightgreen;
+
+}
+
+.th_1 {
+    text-align: center;
+    font-size: medium;
+}
+
+.td_1 {
+    text-align: center;
+    font-size: small;
+}
+.table-bottom {
+    margin-top: 5px;
+    margin-left:10px;
+    padding:0px;
+	width:90%;
+	box-shadow: 10px 10px 5px #888888;
+	border:1px solid #3f7f00;
+	-moz-border-radius-bottomleft:14px;
+	-webkit-border-bottom-left-radius:14px;
+	border-bottom-left-radius:14px;
+}
+
+.tr_1 {
+	align-items: center;
+	box-shadow: 5px 5px 5px #888888;
+	border: 5px solid    lightgrey;
+    background: lightgray;
+}
+
+.td_2 {
+    text-align: left;
+    font-size: medium;
+    font-weight: bold;
+}
+.home_text {
+    margin-top: 10px;
+    margin-left: 15px;
+    color: black;
+    font-size: 15pt;
+    text-decoration: none;
+
+}
+
+.content {
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+div.container {
+    border: 1px solid red;
+    margin-left: 100px;
+}
+
+.button_1 {
+    margin-left: 50%;
+
+}
+
+#footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: 5em;
+}
