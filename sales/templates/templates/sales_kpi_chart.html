@@ -16,192 +16,187 @@
 window.onload = function () {
 
     var gross =[];
-    {% for request in sales_lead %}
-        gross.push({label: '{{request.lead}}', y: {{request.gross.sales}}});
+    {% for request in sales_trainer %}
+        gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
+    {% endfor %}
+
+    var gross_kpi =[];
+    {% for request in sales_trainer %}
+        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_KPI}}});
     {% endfor %}
 
     var cash =[];
-    {% for request in sales_lead %}
-        cash.push({label: '{{request.lead}}', y: {{request.cash.cash}}});
-    {% endfor %}
-
-    var eft =[];
-    {% for request in sales_lead %}
-        eft.push({label: '{{request.lead}}', y: {{request.eft.eft}}});
-    {% endfor %}
-
-
-    var trainer_gross =[];
     {% for request in sales_trainer %}
-        trainer_gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
+        cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
     {% endfor %}
 
-    var trainer_cash =[];
+    var cash_kpi =[];
     {% for request in sales_trainer %}
-        trainer_cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
+        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_KPI}}});
     {% endfor %}
 
-    var trainer_eft =[];
+    var net_eft =[];
     {% for request in sales_trainer %}
-        trainer_eft.push({label: '{{request.trainer}}', y: {{request.eft.eft}}});
+        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft.net_eft}}});
     {% endfor %}
 
-
-
-    var program_gross =[];
-    {% for request in sales_program %}
-        program_gross.push({y: {{request.gross}}, legendText: '{{request.program}}', exploded: true, label: '{{request.program}}' });
+    var net_eft_kpi =[];
+    {% for request in sales_trainer %}
+        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_KPI}}});
     {% endfor %}
-
-    var client_gross =[];
-    {% for request in sales_client %}
-        client_gross.push({y: {{request.gross.sales}}, label: '{{request.client}}' });
-    {% endfor %}
-
-
-var chart1 = new CanvasJS.Chart("chartContainer1",
+  var chart1 = new CanvasJS.Chart("chartContainer1",
     {
-            animationEnabled: true,
-			toolTip: {
-                shared: true
-            },
-    		axisX:{
-            labelMaxWidth: 160,
-            labelWrap: true,
-            labelFontColor: "black",
-            labelFontWeight: "bold",
-            labelFontSize: 12
-        },
-			axisY: {
-				title: "USD"
-			},
-			data: [
-			{
-				type: "column",
-				name: "Gross Sales",
-                color: "#C1E1A6",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				legendText: "Gross Sales",
-				showInLegend: true,
-				dataPoints: gross
-			},
-			{
-				type: "column",
-                color: "gold",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				name: "Cash",
-				legendText: "Cash",
-				showInLegend: true,
-				dataPoints: cash
-			},
-			{
-				type: "column",
-                color: "#558C89",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				name: "EFT",
-				legendText: "EFT",
-				showInLegend: true,
-				dataPoints: eft
-			}
 
-			]
-        });
+      title:{
+        text: "Gross Sale"
+
+      },
+      toolTip:{
+          shared: true,
+      },
+
+      axisY:{
+        title: "Gross Sale",
+        includeZero: false,
+        preffix : "USD",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C24642"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Gross Sale: USD {y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Gross Sales",
+	    showInLegend: true,
+        dataPoints: gross
+      },
+      {
+        type: "line",
+        axisYType: "secondary",
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: gross_kpi
+      }
+
+      ]
+    });
 
     chart1.render();
 
-var chart2 = new CanvasJS.Chart("chartContainer2", {
 
-            animationEnabled: true,
-			toolTip: {
-				shared: true
-			},
-    		axisX:{
-            labelMaxWidth: 160,
-            labelWrap: true,
-            labelFontColor: "black",
-            labelFontWeight: "bold",
-            labelFontSize: 12
-        },
-			axisY: {
-				title: "USD"
-			},
-			data: [
-			{
-				type: "column",
-				name: "Gross Sales",
-                color: "#C1E1A6",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				legendText: "Gross Sales",
-				showInLegend: true,
-				dataPoints: trainer_gross
-			},
-			{
-				type: "column",
-                color: "gold",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				name: "Cash",
-				legendText: "Cash",
-				showInLegend: true,
-				dataPoints: trainer_cash
-			},
-			{
-				type: "column",
-                color: "#558C89",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
-				name: "EFT",
-				legendText: "EFT",
-				showInLegend: true,
-				dataPoints: trainer_eft
-			}
+  var chart2 = new CanvasJS.Chart("chartContainer2",
+    {
 
-			]
-        });
+      title:{
+        text: "Cash Recieved"
 
-chart2.render();
+      },
+      toolTip:{
+          shared: true,
+      },
+
+      axisY:{
+        title: "Cash Recieved",
+        includeZero: false,
+        preffix : "USD",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C24642"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Cash Recieved: USD {y}",
+        color: "#C1E1A6",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Cash Recieved",
+	    showInLegend: true,
+        dataPoints: cash
+      },
+      {
+        type: "line",
+        axisYType: "secondary",
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: cash_kpi
+      }
+
+      ]
+    });
+
+    chart2.render();
 
 
-var chart3 = new CanvasJS.Chart("chartContainer3",
-	{
-		exportFileName: "Pie Chart",
-		exportEnabled: true,
-        animationEnabled: true,
-		legend:{
-			verticalAlign: "bottom",
-			horizontalAlign: "center"
-		},
-		data: [
-		{
-			type: "pie",
-			showInLegend: true,
-			toolTipContent: "{legendText}: <strong>{y}%</strong>",
-			indexLabel: "{label} {y}%",
-			dataPoints: program_gross
-	}
-	]
-	});
+  var chart3 = new CanvasJS.Chart("chartContainer3",
+    {
 
-chart3.render();
+      title:{
+        text: "Net EFT"
 
-var chart4 = new CanvasJS.Chart("chartContainer4",
-{
-                animationEnabled: true,
-		data: [
-		{
-			type: "doughnut",
-			startAngle:20,
-			toolTipContent: "{label}: {y} - <strong>#percent%</strong>",
-			indexLabel: "{label} #percent%",
-			dataPoints: client_gross
-		}
-		]
-	});
-chart4.render();
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Net EFT",
+        includeZero: false,
+        preffix : "USD",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C24642"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Net EFT: USD {y}",
+        color: "#558C89",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Net EFT",
+	    showInLegend: true,
+        dataPoints: net_eft
+      },
+      {
+        type: "line",
+        axisYType: "secondary",
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: net_eft_kpi
+      }
+
+      ]
+    });
+
+    chart3.render();
+
+
+
 
 
      }
@@ -246,7 +241,7 @@ chart4.render();
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
                       {% for request in list_of_slicer %}
-                    <li> <a href="{% url 'client_chart' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
+                    <li> <a href="{% url 'sales_kpi_chart_detail' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
                       {% endfor %}
                   </ul>
                 </li>
@@ -263,7 +258,7 @@ chart4.render();
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sales by lead source</h2>
+                    <h2>Gross Sale: Actual vs Target</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -275,7 +270,7 @@ chart4.render();
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sales by Trainor/Sales Person</h2>
+                    <h2>Cash Recieved: Actual vs Target</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -283,13 +278,11 @@ chart4.render();
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Gross Sale by Sold Programs </h2>
+                    <h2>Net EFT: Actual vs Target</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -298,17 +291,14 @@ chart4.render();
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Gross Sale by Client</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
-                  </div>
-                </div>
-              </div>
+
+
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="row">
+
             </div>
             <div class="clearfix"></div>
           </div>
@@ -318,8 +308,7 @@ chart4.render();
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+            Copyright &copy; Elite Health 2016     </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

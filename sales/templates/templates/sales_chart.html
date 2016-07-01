@@ -30,6 +30,21 @@ window.onload = function () {
         net_eft_added.push({label: '{{request.date}}', y: {{request.eft_added.eft_added}}-{{request.eft_loss.eft_loss}}});
     {% endfor %}
 
+
+
+    var range_gross =[];
+    {% for request in sales_date %}
+        range_gross.push({label: '{{request.date}}', y: [{{request.gross.min_sales}},{{request.gross.max_sales}}]});
+
+    {% endfor %}
+
+    var range_cash =[];
+    {% for request in sales_date %}
+        range_cash.push({label: '{{request.date}}', y: [{{request.cash.min_cash}},{{request.cash.max_cash}}]});
+    {% endfor %}
+
+
+
 var chart1 = new CanvasJS.Chart("chartContainer1",
     {
             animationEnabled: true,
@@ -83,97 +98,38 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
 
     chart1.render();
 
-{#var chart2 = new CanvasJS.Chart("chartContainer2", {#}
-{##}
-{#            animationEnabled: true,#}
-{#			toolTip: {#}
-{#				shared: true#}
-{#			},#}
-{#    		axisX:{#}
-{#            labelMaxWidth: 160,#}
-{#            labelWrap: true,#}
-{#            labelFontColor: "black",#}
-{#            labelFontWeight: "bold",#}
-{#            labelFontSize: 12#}
-{#        },#}
-{#			axisY: {#}
-{#				title: "USD"#}
-{#			},#}
-{#			data: [#}
-{#			{#}
-{#				type: "column",#}
-{#				name: "Gross Sales",#}
-{#                color: "#C1E1A6",#}
-{#                indexLabelPlacement: "inside",#}
-{#                indexLabelFontColor: "white",#}
-{#				legendText: "Gross Sales",#}
-{#				showInLegend: true,#}
-{#				dataPoints: trainer_gross#}
-{#			},#}
-{#			{#}
-{#				type: "column",#}
-{#                color: "gold",#}
-{#                indexLabelPlacement: "inside",#}
-{#                indexLabelFontColor: "white",#}
-{#				name: "Cash",#}
-{#				legendText: "Cash",#}
-{#				showInLegend: true,#}
-{#				dataPoints: trainer_cash#}
-{#			},#}
-{#			{#}
-{#				type: "column",#}
-{#                color: "#558C89",#}
-{#                indexLabelPlacement: "inside",#}
-{#                indexLabelFontColor: "white",#}
-{#				name: "EFT",#}
-{#				legendText: "EFT",#}
-{#				showInLegend: true,#}
-{#				dataPoints: trainer_eft#}
-{#			}#}
-{##}
-{#			]#}
-{#        });#}
-{##}
-{#chart2.render();#}
-{##}
-{##}
-{#var chart3 = new CanvasJS.Chart("chartContainer3",#}
+{#var chart2 = new CanvasJS.Chart("chartContainer2",#}
 {#	{#}
-{#		exportFileName: "Pie Chart",#}
-{#		exportEnabled: true,#}
-{#        animationEnabled: true,#}
-{#		legend:{#}
-{#			verticalAlign: "bottom",#}
-{#			horizontalAlign: "center"#}
+{#		title:{#}
+{#			text: "Max vs Min / Gross Sales and Cash Recieved",#}
+{#		},#}
+{#		exportEnabled: false,#}
+{#		axisY: {#}
+{#			includeZero:false,#}
+{#		},#}
+{#		toolTip: {#}
+{#			shared: true,#}
 {#		},#}
 {#		data: [#}
 {#		{#}
-{#			type: "pie",#}
+{#			type: "rangeColumn",#}
+{#			name: "Gross Sale",#}
 {#			showInLegend: true,#}
-{#			toolTipContent: "{legendText}: <strong>{y}%</strong>",#}
-{#			indexLabel: "{label} {y}%",#}
-{#			dataPoints: program_gross#}
-{#	}#}
-{#	]#}
-{#	});#}
+{#			dataPoints: range_gross#}
 {##}
-{#chart3.render();#}
-{##}
-{#var chart4 = new CanvasJS.Chart("chartContainer4",#}
-{#{#}
-{#                animationEnabled: true,#}
-{#		data: [#}
+{#		},#}
 {#		{#}
-{#			type: "doughnut",#}
-{#			startAngle:20,#}
-{#			toolTipContent: "{label}: {y} - <strong>#percent%</strong>",#}
-{#			indexLabel: "{label} #percent%",#}
-{#			dataPoints: client_gross#}
+{#			type: "rangeColumn",#}
+{#            axisYType: "secondary",#}
+{##}
+{#			showInLegend: true,#}
+{#			name: "Cash Recieved",#}
+{#			dataPoints: range_cash#}
+{##}
 {#		}#}
 {#		]#}
 {#	});#}
-{#chart4.render();#}
-
+{#	chart2.render();#}
 
      }
 </script>
@@ -217,7 +173,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
                       {% for request in list_of_slicer %}
-                    <li> <a href="{% url 'client_chart' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
+                    <li> <a href="{% url 'sales_chart' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
                       {% endfor %}
                   </ul>
                 </li>
@@ -242,44 +198,10 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
                   </div>
                 </div>
               </div>
-
-{#              <div class="col-md-12 col-sm-12 col-xs-12">#}
-{#                <div class="x_panel">#}
-{#                  <div class="x_title">#}
-{#                    <h2>Sales by Trainor/Sales Person</h2>#}
-{#                    <div class="clearfix"></div>#}
-{#                  </div>#}
-{#                  <div class="x_content">#}
-{#                    <div id="chartContainer2" style="height: 350px; width: 100%;" align="center"> </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
             </div>
             <div class="clearfix"></div>
             <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Gross Sale by Sold Programs </h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div id="chartContainer3" style="height: 350px; width: 100%;" align="center"> </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Gross Sale by Client</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -289,8 +211,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+            Copyright &copy; Elite Health 2016     </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

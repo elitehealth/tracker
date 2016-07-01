@@ -50,14 +50,18 @@
                   </li>
                   <li><a><i class="fa fa-table"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="{% url "sales_info" %}">Current Month Progress</a></li>
+                      <li><a href="{% url "sales_kpi" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_info" %}">Client Report</a></li>
-                      <li><a href="{% url "sales_info" %}">Sales Daily Info</a></li>
+                      <li><a href="{% url "sales_info" %}">Sales Report</a></li>
                       <li><a href="{% url "add_appointment" %}">Appointment Info</a></li>
 
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="{% url "sales_info" %}">Current Month KPI</a></li>
+                      <li><a href="{% url "sales_kpi_chart" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_chart_info" %}">Client Charts</a></li>
                       <li><a href="{% url "sales_chart_info" %}">Sales Charts</a></li>
                     </ul>
