@@ -1,0 +1,402 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Elite Fitness|Current Progress</title>
+<script type="text/javascript">
+window.onload = function () {
+
+    var gross =[];
+    {% for request in sales_trainer %}
+        gross.push({label: '{{request.trainer}}', y: {{request.gross_gap}}});
+    {% endfor %}
+
+    var gross_kpi =[];
+    {% for request in sales_trainer %}
+        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_speed_required}}});
+    {% endfor %}
+
+    var cash =[];
+    {% for request in sales_trainer %}
+        cash.push({label: '{{request.trainer}}', y: {{request.cash_gap}}});
+    {% endfor %}
+
+    var cash_kpi =[];
+    {% for request in sales_trainer %}
+        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_speed_required}}});
+    {% endfor %}
+
+    var net_eft =[];
+    {% for request in sales_trainer %}
+        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft_gap}}});
+    {% endfor %}
+
+    var net_eft_kpi =[];
+    {% for request in sales_trainer %}
+        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_speed_required}}});
+    {% endfor %}
+
+    var program =[];
+    {% for request in sales_trainer %}
+        program.push({label: '{{request.trainer}}', y: {{request.program_gap}}});
+    {% endfor %}
+
+
+    var program_kpi =[];
+    {% for request in sales_trainer %}
+        program_kpi.push({label: '{{request.trainer}}', y: {{request.program_speed_required}}});
+    {% endfor %}
+
+
+  var chart1 = new CanvasJS.Chart("chartContainer1",
+    {
+
+      title:{
+        text: "Gross Sale Gap"
+
+      },
+      toolTip:{
+          shared: true,
+      },
+
+      axisY:{
+        title: "Gross Sale Gap",
+        includeZero: false,
+        prefix : "USD ",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "Required Daily Gross Sale to Achieve Target",
+        includeZero: false,
+        prefix : "USD ",
+        lineColor: "darkgreen"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Gross Sale GAP: USD {y}",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Gross Sales Gap",
+	    showInLegend: true,
+        dataPoints: gross
+      },
+      {
+        type: "column",
+        axisYType: "secondary",
+        color: "#CCCCCC",
+        toolTipContent: "Required Daily Gross Sale: USD{y}",
+    	legendText: "Required Daily Gross Sale to Achieve Target, USD",
+	    showInLegend: true,
+        dataPoints: gross_kpi
+      }
+
+      ]
+    });
+
+    chart1.render();
+
+
+  var chart2 = new CanvasJS.Chart("chartContainer2",
+    {
+
+      title:{
+        text: "Cash Recieved GAP"
+
+      },
+      toolTip:{
+          shared: true,
+      },
+
+      axisY:{
+        title: "Cash Recieved GAP",
+        includeZero: false,
+        prefix : "USD",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "Required Daily Cash Collection to Achieve Target",
+        includeZero: false,
+        prefix : "USD",
+        lineColor: "rgb(137, 172, 191)"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Cash Recieved GAP: USD {y}",
+        color: "#C1E1A6",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Cash Recieved GAP",
+	    showInLegend: true,
+        dataPoints: cash
+      },
+      {
+        type: "column",
+        color: "#CCCCCC",
+        axisYType: "secondary",
+        toolTipContent: "Required Daily Cash Collection: USD {y}",
+    	legendText: "Required Daily Cash Collection to Achieve Target, USD",
+	    showInLegend: true,
+        dataPoints: cash_kpi
+      }
+
+      ]
+    });
+
+    chart2.render();
+
+
+  var chart3 = new CanvasJS.Chart("chartContainer3",
+    {
+
+      title:{
+        text: "Net EFT GAP"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Net EFT GAP",
+        includeZero: false,
+        prefix : "USD",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "Required Daily Net EFT Added to Achieve Target",
+        includeZero: false,
+        prefix : "USD",
+        lineColor: "rgb(211, 252, 167)"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Net EFT GAP: USD {y}",
+        color: "#558C89",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Net EFT GAP",
+	    showInLegend: true,
+        dataPoints: net_eft
+      },
+      {
+        type: "column",
+        color: "#CCCCCC",
+        axisYType: "secondary",
+        toolTipContent: "Required Daily Net EFT Added: USD {y}",
+    	legendText: "Required Daily Net EFT Added, USD",
+	    showInLegend: true,
+        dataPoints: net_eft_kpi
+      }
+
+      ]
+    });
+
+    chart3.render();
+
+
+  var chart4 = new CanvasJS.Chart("chartContainer4",
+    {
+
+      title:{
+        text: "Program Sold GAP"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Program Sold GAP",
+        includeZero: false,
+        prefix : "Quantity",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "Required Daily Sold Quantity to Achieve Target",
+        includeZero: false,
+        lineColor: "#C24642"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Program Sold GAP: {y}",
+        color: "#62C9C3",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Program Sold GAP",
+	    showInLegend: true,
+        dataPoints: program
+      },
+      {
+        type: "column",
+        color: "#CCCCCC",
+        axisYType: "secondary",
+        toolTipContent: "Required Daily Sold Quantity to Achieve Target: {y}",
+    	legendText: "Required Daily Sold Quantity to Achieve Target",
+	    showInLegend: true,
+        dataPoints: program_kpi
+      }
+
+      ]
+    });
+
+    chart4.render();
+
+
+
+     }
+</script>
+
+
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static 'vendors/google-code-prettify/bin/prettify.min.css' %}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{% static 'vendors/select2/dist/css/select2.min.css'%}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{% static 'vendors/switchery/dist/switchery.min.css' %}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{% static 'vendors/starrr/dist/starrr.css' %}" rel="stylesheet">
+    <link href="{% static 'css/freelancer.css' %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      {% include 'templates/navbar.html'  %}
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix">
+                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Gross Sale: Gap</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer1" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Cash Recieved: GAP</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer2" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Net EFT: GAP</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer3" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Program Sold: GAP</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="row">
+
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Copyright &copy; Elite Fitness 2016     </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- FastClick -->
+    <script src="{% static 'vendors/fastclick/lib/fastclick.js' %}"></script>
+    <!-- NProgress -->
+    <script src="{% static 'vendors/nprogress/nprogress.js' %}"></script>
+    <!-- Chart.js -->
+    <script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{% static 'build/js/custom.min.js' %}"></script>
+
+    <!-- Chart.js -->
+
+
+    <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
+
+
+
+    <!-- /Chart.js -->
+  </body>
+</html>

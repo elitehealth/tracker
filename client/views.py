@@ -104,13 +104,7 @@ def client_chart_info(request):
 
 def direct(request):
     current_user = request.user.id
-    restricted_group = models.Group.objects.get(id=2)
-    restricted_users = restricted_group.user_set.filter(id=current_user)
-
-    if request.user.is_authenticated() and len(restricted_users)>0:
-        return redirect("add_client")
-
-    elif request.user.is_authenticated() and len(restricted_users)==0:
+    if request.user.is_authenticated():
         return render(request, 'templates/index.html',{})
 
     else:

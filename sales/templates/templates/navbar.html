@@ -5,7 +5,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{% url "profile" %}" class="site_title"><i class="fa fa-paw"></i> <span>Elite Health</span></a>
+              <a href="{% url "profile" %}" class="site_title"><i class="fa fa-paw"></i> <span>Elite Fitness</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -14,7 +14,6 @@
             <div class="profile">
               <div class="profile_pic">
                 <img src="{% static 'images/brad.jpg' %}" alt="..." class="img-circle profile_img">
-                  {{ group.id }}
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -34,18 +33,15 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Add Info <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{% url "add_client" %}">Client Info</a></li>
-                      <li><a href="{% url "add_sales" %}">Sales Daily Info</a></li>
-                      <li><a href="{% url "add_appointment" %}">Appointment Info</a></li>
+                      <li><a href="{% url "add_client" %}">New Client Info</a></li>
+                      <li><a href="{% url "add_sales" %}">Daily Sales</a></li>
+                      <li><a href="{% url "add_appointment" %}">Consultation Tracking</a></li>
+                      <li><a href="{% url "add_goal" %}">Daily Goal</a></li>
 
-                        {#                      <li><a href="form_advanced.html">Appointment Daily Info</a></li>#}
-{#                      <li><a href="form_validation.html">Goals Daily Info</a></li>#}
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Reports <span class="fa fa-chevron-down"></span></a>
@@ -54,7 +50,7 @@
                       <li><a href="{% url "sales_kpi" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_info" %}">Client Report</a></li>
                       <li><a href="{% url "sales_info" %}">Sales Report</a></li>
-                      <li><a href="{% url "add_appointment" %}">Appointment Info</a></li>
+                      <li><a href="{% url "appointment_info" %}">Tracking Report</a></li>
 
                     </ul>
                   </li>
@@ -64,6 +60,9 @@
                       <li><a href="{% url "sales_kpi_chart" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_chart_info" %}">Client Charts</a></li>
                       <li><a href="{% url "sales_chart_info" %}">Sales Charts</a></li>
+                      <li><a href="{% url "appointment_chart_info" %}">Tracking Charts</a></li>
+
+
                     </ul>
                   </li>
                 </ul>

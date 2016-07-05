@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Elite Health|Client </title>
+    <title>Elite Fitness|Sales </title>
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
@@ -120,23 +120,21 @@
                           <th>Net EFT </th>
                         </tr>
                       </thead>
-                       <tbody>
+                       <tr>
                         {% for request in sales_period%}
                        <td> Before 15th (including) </td>
                        <td> {{ request.period1_gross  }}</td>
                        <td> {{ request.period1_cash }}</td>
                        <td> {{ request.period1_net }}</td>
                        {% endfor %}
-                       </tbody>
-                       <tbody>
-
+                       </tr>
+                       <tr>
                         {% for request in sales_period%}
-
                        <td> After 15th </td>
                        <td> {{ request.period2_gross  }}</td>
                        <td> {{ request.period2_cash }}</td>
                        <td> {{ request.period2_net }}</td>
-
+                       </tr>
 
                        {% endfor %}
 
@@ -145,7 +143,6 @@
 {#                       <td> {{ request.eft_loss }}</td>#}
 {#                       <td> {{ request.daily_sales }}</td>#}
 
-                       </tbody>
 
                     </table>
                   </div>
@@ -253,7 +250,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Copyright &copy; Elite Health 2016     </div>
+            Copyright &copy; Elite Fitness 2016     </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

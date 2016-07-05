@@ -9,13 +9,11 @@ class AppointmentForm(forms.ModelForm):
         model = appointment
         fields = [
             'date',
-            'sold_by',
-            'consultation_scheduled',
-            'consultation_showed',
-            'consultation_closed',
-            'sold_by',
-            'consult_no_call_no_show',
-            'consult_cancelled_rescheduled',
-            'consult_cancelled'
+            'consultations_requested',
+            'consultations_scheduled',
+            'consultations_cancelled',
+            'consultations_closed',
+            'consultations_no_show',
+            'consultations_rescheduled'
         ]
 

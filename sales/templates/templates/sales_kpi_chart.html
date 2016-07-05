@@ -11,39 +11,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Elite Health| Client Sales</title>
+    <title>Elite Fitness|Sales KPI</title>
 <script type="text/javascript">
 window.onload = function () {
 
     var gross =[];
-    {% for request in sales_trainer %}
+    {% for request in trainer %}
         gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
     {% endfor %}
 
     var gross_kpi =[];
-    {% for request in sales_trainer %}
-        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_KPI}}});
+    {% for request in trainer %}
+        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_kpi}}});
     {% endfor %}
 
     var cash =[];
-    {% for request in sales_trainer %}
+    {% for request in trainer %}
         cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
     {% endfor %}
 
     var cash_kpi =[];
-    {% for request in sales_trainer %}
-        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_KPI}}});
+    {% for request in trainer %}
+        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_kpi}}});
     {% endfor %}
 
     var net_eft =[];
-    {% for request in sales_trainer %}
-        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft.net_eft}}});
+    {% for request in trainer %}
+        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft}}});
     {% endfor %}
 
     var net_eft_kpi =[];
-    {% for request in sales_trainer %}
-        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_KPI}}});
+    {% for request in trainer %}
+        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_kpi}}});
     {% endfor %}
+
+    var program =[];
+    {% for request in trainer %}
+        program.push({label: '{{request.trainer}}', y: {{request.program.program}}});
+    {% endfor %}
+
+
+    var program_kpi =[];
+    {% for request in trainer %}
+        program_kpi.push({label: '{{request.trainer}}', y: {{request.program_kpi}}});
+    {% endfor %}
+
+
   var chart1 = new CanvasJS.Chart("chartContainer1",
     {
 
@@ -196,6 +209,55 @@ window.onload = function () {
     chart3.render();
 
 
+  var chart4 = new CanvasJS.Chart("chartContainer4",
+    {
+
+      title:{
+        text: "Program Sold"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Program Sold",
+        includeZero: false,
+        preffix : "Quantity",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C24642"
+      },
+      axisX: {
+        title: "Sold by",
+      },
+      data: [{
+        type: "column",
+        toolTipContent: "Net EFT: USD {y}",
+        color: "#62C9C3",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Program Sold",
+	    showInLegend: true,
+        dataPoints: program
+      },
+      {
+        type: "line",
+        axisYType: "secondary",
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: program_kpi
+      }
+
+      ]
+    });
+
+    chart4.render();
 
 
 
@@ -291,6 +353,17 @@ window.onload = function () {
                 </div>
               </div>
 
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Program Sold: Actual vs Target</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
 
 
             </div>
@@ -308,7 +381,7 @@ window.onload = function () {
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Copyright &copy; Elite Health 2016     </div>
+            Copyright &copy; Elite Fitness 2016     </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

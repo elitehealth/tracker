@@ -8,8 +8,7 @@ class SalesModelAdmin(admin.ModelAdmin):
     # list_display_links = ["date"]
     date_hierarchy = 'date'
     list_per_page = 20
-    list_filter = ['date','sold_by']
-    search_fields = ['sold_by']
+    list_filter = ['date']
     list_editable = ['gross_sale','cash_recieved','eft_added']
 
     class Meta:

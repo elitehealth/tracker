@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'', include('client.urls')),
     url(r'', include('sales.urls')),
     url(r'', include('appointment.urls')),
+    url(r'', include('target.urls')),
+
 
 ]
 

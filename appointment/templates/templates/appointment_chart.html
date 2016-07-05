@@ -1,0 +1,218 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Elite Fitness|Tracking</title>
+<script type="text/javascript">
+window.onload = function () {
+
+    var gross =[];
+    gross.push({y: {{ tracking_info.shows_percentage}}, label: '{{ tracking_info.shows_percentage}}%', indexLabel: "Shows	" });
+    gross.push({y: {{ tracking_info.cancelled}}, label: '{{ tracking_info.cancelled}}%', indexLabel: "Cancelled " });
+    gross.push({y: {{ tracking_info.closed}}, label: '{{ tracking_info.closed}}%', indexLabel: "Closed " });
+    gross.push({y: {{ tracking_info.no_show}}, label: '{{ tracking_info.no_show}}%', indexLabel: "No Shows	" });
+    gross.push({y: {{ tracking_info.rescheduled}}, label: '{{ tracking_info.rescheduled}}%', indexLabel: "Rescheduled " });
+
+    var sum =[];
+    sum.push({y: {{ tracking_sum.shows}}, label: "Shows", indexLabel: "Shows	" });
+    sum.push({y: {{ tracking_sum.cancelled}}, label: "Cancelled ", indexLabel: "Cancelled" });
+    sum.push({y: {{ tracking_sum.closed}}, label: "Closed",  indexLabel: "Closed" });
+    sum.push({y: {{ tracking_sum.no_show}}, label: "No Shows",  indexLabel: "No Shows	" });
+    sum.push({y: {{ tracking_sum.rescheduled}}, label: "Rescheduled",  indexLabel: "Rescheduled" });
+
+
+
+
+
+        var chart1 = new CanvasJS.Chart("chartContainer1", {
+            title: {
+                text: "Tracking by Percentages",
+                fontColor: "Peru",
+                fontSize: 28
+
+            },
+            animationEnabled: true,
+            axisY: {
+                tickThickness: 0,
+                lineThickness: 0,
+                valueFormatString: " ",
+                gridThickness: 0
+            },
+            axisX: {
+                tickThickness: 0,
+                lineThickness: 0,
+                labelFontSize: 18,
+                labelFontColor: "Peru"
+
+            },
+            data: [
+            {
+                indexLabelFontSize: 26,
+                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{indexLabel} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}%</strong></span>",
+
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: 600,
+                color: "#62C9C3",
+                type: "bar",
+                dataPoints: gross
+            }
+            ]
+        });
+
+        chart1.render();
+
+    var chart2 = new CanvasJS.Chart("chartContainer2",
+    {
+      title:{
+        text: "Tracking by numbers"
+      },
+      animationEnabled: true,
+      data: [
+      {
+      toolTipContent: "<span style='\"'color: {color};'\"'><strong>{indexLabel} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}</strong></span>",
+
+      indexLabelPlacement: "inside",
+      indexLabelFontColor: "black",
+      type: "bar",
+      color: "#33FFF9",
+      dataPoints: sum
+      }
+
+      ]
+    });
+
+chart2.render();
+
+
+
+
+     }
+</script>
+
+
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static 'vendors/google-code-prettify/bin/prettify.min.css' %}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{% static 'vendors/select2/dist/css/select2.min.css'%}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{% static 'vendors/switchery/dist/switchery.min.css' %}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{% static 'vendors/starrr/dist/starrr.css' %}" rel="stylesheet">
+    <link href="{% static 'css/freelancer.css' %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      {% include 'templates/navbar.html'  %}
+        <div class="right_col" role="main">
+          <div class="">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                     <i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i>  <h6 style="color: red"> Change Reporting Date</h6>
+
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
+                      {% for request in list_of_slicer %}
+                    <li> <a href="{% url 'client_chart' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
+                      {% endfor %}
+                  </ul>
+                </li>
+                  </ul>
+          </div>
+          <div class="">
+            <div class="clearfix">
+                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Tracking Percentages</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer1" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sales by Trainor/Sales Person</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer2" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- FastClick -->
+    <script src="{% static 'vendors/fastclick/lib/fastclick.js' %}"></script>
+    <!-- NProgress -->
+    <script src="{% static 'vendors/nprogress/nprogress.js' %}"></script>
+    <!-- Chart.js -->
+    <script src="{% static 'vendors/Chart.js/dist/Chart.min.js' %}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{% static 'build/js/custom.min.js' %}"></script>
+
+    <!-- Chart.js -->
+
+
+    <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
+
+
+
+    <!-- /Chart.js -->
+  </body>
+</html>

@@ -1,0 +1,62 @@
+{% load staticfiles %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Elite Fitness | Login </title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">
+    <!-- jVectorMap -->
+    <link href="{% static 'css/maps/jquery-jvectormap-2.0.3.css' %}" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+                            <h1>Login to the Dashboard System</h1>
+             {% if form.errors %}
+                <p style="color: red"> Username or Password error</p>
+            {% endif %}
+
+            <form class="-align-center" method="POST" action="{% url "auth_login" %}" > {% csrf_token %}
+                <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password" />
+                </div>
+                <input class='btn btn-success btn-primary' style="background-color: #18bc9c; margin-bottom: 80%" type="submit" value="{% trans 'Login' %}" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+
+
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

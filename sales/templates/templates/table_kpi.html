@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Elite Health|Client </title>
+    <title>Elite Fitness|KPI </title>
 
     <!-- Bootstrap -->
     <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
@@ -106,47 +106,57 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sales by Dates </h2>
+                    <h2>Target vs Actual </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received and Net EFT added by dates.  </p>
+                    <p class="text-muted font-13 m-b-30"> The report shows the actual achievements versus targets per each trainer/sold person. </p>
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                           <th>Trainer</th>
-                          <th>Gross Sale Amount</th>
                           <th>Gross Sale Target</th>
-                          <th>Gross Sale Target Achievement</th>
-
-                          <th>Cash Recieved</th>
+                          <th>Gross Sale, KPI, %</th>
                           <th>Cash Target</th>
-                          <th>Net EFT</th>
+                          <th>Cash Recieved, KPI, %</th>
                           <th>Net EFT Target</th>
+                          <th>Net EFT, KPI, %</th>
+                          <th>Programs Sold Target</th>
+                          <th>Program Sold, KPI, %</th>
+
+
                         </tr>
                       </thead>
-                        {% for request in sales_trainer%}
+                        {% for request in trainer%}
                        <tbody>
                        <td> {{ request.trainer  }}</td>
-                       <td> {{ request.gross.sales }}</td>
-                       <td> {{ request.gross_target }}</td>
-                       <td> {{ request.gross_KPI }}</td>
-
-                       <td> {{ request.cash.cash }}</td>
-                       <td> {{ request.cash_target }}</td>
-                       <td> {{ request.net_eft.net_eft }}</td>
-                       <td> {{ request.net_eft_target }}</td>
-
-{#                       <td> {{ request.cash_recieved }}</td>#}
-{#                       <td> {{ request.eft_added }}</td>#}
-{#                       <td> {{ request.eft_loss }}</td>#}
-{#                       <td> {{ request.daily_sales }}</td>#}
-
-
+                       <td> {{ request.gross_target.gross_target }}</td>
+                            {% if  request.gross_kpi <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.gross_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.gross_kpi }}</td>
+                            {% endif %}
+                       <td> {{ request.cash_target.cash_target }}</td>
+                            {% if  request.cash_kpi  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.cash_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.cash_kpi }}</td>
+                            {% endif %}
+                       <td> {{ request.net_eft_target.net_eft_target }}</td>
+                            {% if  request.net_eft_kpi <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.net_eft_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.net_eft_kpi }}</td>
+                            {% endif %}
+                       <td> {{ request.program_target.program_target }}</td>
+                            {% if  request.program_kpi <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.program_kpi }}</td>
+                            {% else %}
+                       <td> {{ program.gross_kpi }}</td>
+                            {% endif %}
                        {% endfor %}
                        </tbody>
-
                     </table>
                   </div>
                 </div>
@@ -163,7 +173,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Copyright &copy; Elite Health 2016     </div>
+            Copyright &copy; Elite Fitness 2016     </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
