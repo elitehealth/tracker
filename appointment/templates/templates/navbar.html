@@ -13,12 +13,19 @@
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
+                  {% if 'Brad' in user.first_name %}
                 <img src="{% static 'images/brad.jpg' %}" alt="..." class="img-circle profile_img">
+                  {% elif 'Mikki' in user.first_name %}
+                <img src="{% static 'images/mikki.jpg' %}" alt="..." class="img-circle profile_img">
+                  {% elif 'Sean' in user.first_name %}
+                <img src="{% static 'images/sean.jpg' %}" alt="..." class="img-circle profile_img">
+                  {% else %}
+                <img src="{% static 'images/user.png' %}" alt="..." class="img-circle profile_img">
+                  {% endif %}
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h2>{{ user.first_name }}</h2>
-                <h2>{{ Group}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -30,10 +37,7 @@
               <div class="menu_section">
                 <h3>Analytics</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                    </ul>
+                  <li><a href="{% url "profile" %}"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Add Info <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -46,7 +50,7 @@
                   </li>
                   <li><a><i class="fa fa-table"></i> Reports <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{% url "sales_info" %}">Current Month Progress</a></li>
+                      <li><a href="{% url "sales_current_kpi" %}">Current Month Progress</a></li>
                       <li><a href="{% url "sales_kpi" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_info" %}">Client Report</a></li>
                       <li><a href="{% url "sales_info" %}">Sales Report</a></li>
@@ -56,7 +60,7 @@
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{% url "sales_info" %}">Current Month KPI</a></li>
+                      <li><a href="{% url "current_kpi_chart" %}">Current Month KPI</a></li>
                       <li><a href="{% url "sales_kpi_chart" %}">Target Achievements</a></li>
                       <li><a href="{% url "client_chart_info" %}">Client Charts</a></li>
                       <li><a href="{% url "sales_chart_info" %}">Sales Charts</a></li>
@@ -93,7 +97,16 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{% static 'images/brad.jpg' %}" alt=""> {{ user.first_name }} {{ user.last_name }}
+                  {% if 'Brad' in user.first_name %}
+                <img src="{% static 'images/brad.jpg' %}" alt="" > {{ user.first_name }} {{ user.last_name }}
+                  {% elif 'Mikki' in user.first_name %}
+                <img src="{% static 'images/mikki.jpg' %}" alt="" >{{ user.first_name }} {{ user.last_name }}
+                  {% elif 'Sean' in user.first_name %}
+                <img src="{% static 'images/sean.jpg' %}" alt="" >{{ user.first_name }} {{ user.last_name }}
+                  {% else %}
+                <img src="{% static 'images/user.png' %}" alt="">{{ user.first_name }} {{ user.last_name }}
+                  {% endif %}
+
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

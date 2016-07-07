@@ -5,7 +5,7 @@ from client.models import Trainer
 
 
 class Record(models.Model):
-    date = models.DateField(blank=False)
+    date = models.DateField(blank=False, default=timezone.now)
     consults_attended = models.IntegerField(blank=False,null=False)
     consults_closed = models.IntegerField(blank=False)
     gross_sale = models.FloatField(blank=False,null=False)

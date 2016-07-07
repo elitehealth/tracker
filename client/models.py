@@ -32,7 +32,7 @@ class Lead(models.Model):
 
 class Client(models.Model):
     client_name = models.CharField(max_length=100, blank=False)
-    date_sign_up = models.DateField(blank=False)
+    date_sign_up = models.DateField(blank=False, default=timezone.now)
     program_sold = models.ForeignKey(Program)
     gross_sale = models.FloatField(blank=False,null=False)
     cash_recieved = models.FloatField()

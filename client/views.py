@@ -21,8 +21,9 @@ from .forms import ClientForm
 from .models import Client, Lead, Trainer, Program
 from django.db.models import Avg, Max,F, FloatField, Sum,Count
 import datetime
-
-
+from sales.models import Record
+from target.models import Target_type,Goal
+import calendar
 
 def home(request):
     return render(request, 'base.html',{})
@@ -100,15 +101,161 @@ def client_chart_info(request):
     else:
         return render(request, 'base.html', {})
 
-
-
 def direct(request):
-    current_user = request.user.id
+
+    current_user = str(request.user.id)
     if request.user.is_authenticated():
-        return render(request, 'templates/index.html',{})
+        sales_trainer=[]
+        sales_sum=[]
+        sales_dates=[]
+
+        repoting_date = datetime.datetime.now()
+        sales_filtered=Client.objects.filter(date_sign_up__month=repoting_date.month,date_sign_up__year=repoting_date.year)
+        max_days=calendar.monthrange(repoting_date.year,repoting_date.month)[1]
+        completed_days=repoting_date.day
+        operating_days=max_days-completed_days
+
+        gross_sale = sales_filtered.aggregate(sales=Sum('gross_sale'))
+        gross_speed= round(gross_sale['sales']/completed_days,0)
+        gross_target=Target_type.objects.filter(id=6).aggregate(gross_target=Sum('monthly_goal'))
+        gross_gap=gross_target['gross_target']-gross_sale['sales']
+        gross_speed_required= round(gross_gap/operating_days,0)
+        gross_speed_increase = round(100*(gross_speed_required/gross_speed-1),2)
+
+        cash = sales_filtered.aggregate(cash=Sum('cash_recieved'))
+        cash_speed= round(cash['cash']/completed_days,0)
+        cash_target=Target_type.objects.filter(id=7).aggregate(cash_target=Sum('monthly_goal'))
+        cash_gap=cash_target['cash_target']-cash['cash']
+        cash_speed_required= round(cash_gap/operating_days,0)
+        cash_speed_increase = round(100*(cash_speed_required/cash_speed-1),2)
+
+        eft_added = sales_filtered.aggregate(eft_added=Sum('eft_added'))
+        eft_loss = sales_filtered.aggregate(eft_loss=Sum('eft_loss'))
+        net_eft=eft_added['eft_added']-eft_loss['eft_loss']
+        net_eft_speed= round(net_eft/completed_days,0)
+        net_eft_target=Target_type.objects.filter(id=8).aggregate(net_eft_target=Sum('monthly_goal'))
+        net_eft_gap=net_eft_target['net_eft_target']-net_eft
+        net_eft_speed_required= round(net_eft_gap/operating_days,0)
+        net_eft_speed_increase = round(100*(net_eft_speed_required/net_eft_speed-1),2)
+
+        program = sales_filtered.aggregate(program=Count('program_sold'))
+        program_speed= round(program['program']/completed_days,0)
+        program_target=Target_type.objects.filter(id=5).aggregate(program_target=Sum('monthly_goal'))
+        program_gap=program_target['program_target']-program['program']
+        program_speed_required= round(program_gap/operating_days,2)
+        program_speed_increase = round(100*(cash_speed_required/cash_speed-1),2)
+
+        temp0=dict()
+        temp0['gross_sale']=int(gross_sale['sales'])
+        temp0['gross_speed']=int(gross_speed)
+        temp0['gross_gap']=int(gross_gap)
+        temp0['gross_speed_required']=gross_speed_required
+        temp0['gross_speed_increase']=gross_speed_increase
+
+        temp0['cash']=int(cash['cash'])
+        temp0['cash_speed']=cash_speed
+        temp0['cash_gap']=cash_gap
+        temp0['cash_speed_required']=cash_speed_required
+        temp0['cash_speed_increase']=cash_speed_increase
+
+        temp0['net_eft']=int(net_eft)
+        temp0['net_eft_speed']=int(net_eft_speed)
+        temp0['net_eft_gap']=net_eft_gap
+        temp0['net_eft_speed_required']=net_eft_speed_required
+        temp0['net_eft_speed_increase']=net_eft_speed_increase
+
+        temp0['program']=int(program['program'])
+        temp0['program_speed']=program_speed
+        temp0['program_gap']=program_gap
+        temp0['program_speed_required']=program_speed_required
+        temp0['program_speed_increase']=program_speed_increase
+
+        sales_sum.append(temp0)
+
+
+        sales_filtered_sales=Record.objects.filter(date__month=repoting_date.month,date__year=repoting_date.year)
+        sold_dates_sales=sales_filtered_sales.values_list('date', flat=True).distinct().order_by('-date')
+
+        for i in range(len(sold_dates_sales)):
+            gross_sale = sales_filtered_sales.filter(date=sold_dates_sales[i]).aggregate(sales=Sum('gross_sale'))
+            cash = sales_filtered_sales.filter(date=sold_dates_sales[i]).aggregate(cash=Sum('cash_recieved'))
+            eft_added = sales_filtered_sales.filter(date=sold_dates_sales[i]).aggregate(eft_added=Sum('eft_added'))
+            eft_loss = sales_filtered_sales.filter(date=sold_dates_sales[i]).aggregate(eft_loss=Sum('eft_loss'))
+            temp=dict()
+            temp['date']=sold_dates_sales[i]
+            temp['gross']=gross_sale
+            temp['cash']=cash
+            temp['net_eft']=eft_added['eft_added']-eft_loss['eft_loss']
+            sales_dates.append(temp)
+
+        trainer=sales_filtered.values_list('sold_by', flat=True).distinct().order_by('sold_by')
+        for i in range(len(trainer)):
+            gross_sale = sales_filtered.filter(sold_by=trainer[i]).aggregate(sales=Sum('gross_sale'))
+            gross_speed= round(gross_sale['sales']/completed_days,0)
+            gross_target=Target_type.objects.filter(id=6).aggregate(gross_target=Sum('monthly_goal'))
+            gross_gap=gross_target['gross_target']-gross_sale['sales']
+            gross_speed_required= round(gross_gap/operating_days,0)
+            gross_speed_increase = round(100*(gross_speed_required/gross_speed-1),2)
+
+            cash = sales_filtered.filter(sold_by=trainer[i]).aggregate(cash=Sum('cash_recieved'))
+            cash_speed= round(cash['cash']/completed_days,0)
+            cash_target=Target_type.objects.filter(id=7).aggregate(cash_target=Sum('monthly_goal'))
+            cash_gap=cash_target['cash_target']-cash['cash']
+            cash_speed_required= round(cash_gap/operating_days,0)
+            cash_speed_increase = round(100*(cash_speed_required/cash_speed-1),2)
+
+            eft_added = sales_filtered.filter(sold_by=trainer[i]).aggregate(eft_added=Sum('eft_added'))
+            eft_loss = sales_filtered.filter(sold_by=trainer[i]).aggregate(eft_loss=Sum('eft_loss'))
+            net_eft=eft_added['eft_added']-eft_loss['eft_loss']
+            net_eft_speed= round(net_eft/completed_days,0)
+            net_eft_target=Target_type.objects.filter(id=8).aggregate(net_eft_target=Sum('monthly_goal'))
+            net_eft_gap=net_eft_target['net_eft_target']-net_eft
+            net_eft_speed_required= round(net_eft_gap/operating_days,0)
+            net_eft_speed_increase = round(100*(net_eft_speed_required/net_eft_speed-1),2)
+
+            program = sales_filtered.filter(sold_by=trainer[i]).aggregate(program=Count('program_sold'))
+            program_speed= round(program['program']/completed_days,0)
+            program_target=Target_type.objects.filter(id=5).aggregate(program_target=Sum('monthly_goal'))
+            program_gap=program_target['program_target']-program['program']
+            program_speed_required= round(program_gap/operating_days,2)
+            program_speed_increase = round(100*(cash_speed_required/cash_speed-1),2)
+
+
+            temp=dict()
+            temp['trainer']=Trainer.objects.filter(id=trainer[i]).values_list('name')[0][0]
+            temp['gross_speed']=gross_speed
+            temp['gross_gap']=gross_gap
+            temp['gross_speed_required']=gross_speed_required
+            temp['gross_speed_increase']=gross_speed_increase
+
+            temp['cash_speed']=cash_speed
+            temp['cash_gap']=cash_gap
+            temp['cash_speed_required']=cash_speed_required
+            temp['cash_speed_increase']=cash_speed_increase
+
+            temp['net_eft_speed']=net_eft_speed
+            temp['net_eft_gap']=net_eft_gap
+            temp['net_eft_speed_required']=net_eft_speed_required
+            temp['net_eft_speed_increase']=net_eft_speed_increase
+
+            temp['program_speed']=program_speed
+            temp['program_gap']=program_gap
+            temp['program_speed_required']=program_speed_required
+            temp['program_speed_increase']=program_speed_increase
+
+            sales_trainer.append(temp)
+
+        print(sales_trainer)
+        print(sales_dates)
+        print(sales_sum)
+
+        return render(request, 'templates/index.html', {'sales_dates': sales_dates,
+                                                               'reporting_date': repoting_date.strftime("%B, %y"),
+                                                              'sales_trainer': sales_trainer,'sales_sum': sales_sum
+                                                        })
 
     else:
-        return render(request, 'base.html',{})
+        return render(request, 'base.html', {})
 
 def add_client(request):
 
