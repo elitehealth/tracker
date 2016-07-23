@@ -17,43 +17,107 @@ window.onload = function () {
 
     var gross =[];
     {% for request in trainer %}
-        gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
+        gross.push({label: 'Overall Month', y: {{request.gross.sales}}, indexLabel: '${{request.gross.sales}}'});
+        gross.push({label: '1st - 15th', y: {{request.gross_period_1}}, indexLabel: '${{request.gross_period_1}}'});
+        gross.push({label: '16th - End of Month', y: {{request.gross_period_2}}, indexLabel: '${{request.gross_period_2}}'});
     {% endfor %}
 
     var gross_kpi =[];
     {% for request in trainer %}
-        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_kpi}}});
+        gross_kpi.push({label: 'Overall Month', y: {{request.gross_kpi}}, indexLabel: '{{request.gross_kpi}}%'});
+        gross_kpi.push({label: '1st - 15th', y: {{request.gross_kpi_1}}, indexLabel: '{{request.gross_kpi_1}}%'});
+        gross_kpi.push({label: '16th - End of Month', y: {{request.gross_kpi_2}}, indexLabel: '{{request.gross_kpi_2}}%'});
     {% endfor %}
 
     var cash =[];
     {% for request in trainer %}
-        cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
+        cash.push({label: 'Overall Month', y: {{request.cash.cash}}, indexLabel: '${{request.cash.cash}}'});
+        cash.push({label: '1st - 15th', y: {{request.cash_period_1}}, indexLabel: '${{request.cash_period_1}}'});
+        cash.push({label: '16th - End of Month', y: {{request.cash_period_2}}, indexLabel: '${{request.cash_period_2}}'});
     {% endfor %}
 
     var cash_kpi =[];
     {% for request in trainer %}
-        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_kpi}}});
+        cash_kpi.push({label: 'Overall Month', y: {{request.cash_kpi}}, indexLabel: '{{request.cash_kpi}}%'});
+        cash_kpi.push({label: '1st - 15th', y: {{request.cash_kpi_1}}, indexLabel: '{{request.cash_kpi_1}}%'});
+        cash_kpi.push({label: '16th - End of Month', y: {{request.cash_kpi_2}}, indexLabel: '{{request.cash_kpi_2}}%'});
     {% endfor %}
+
 
     var net_eft =[];
     {% for request in trainer %}
-        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft}}});
+        net_eft.push({label: 'Overall Month', y: {{request.net_eft}}, indexLabel: '${{request.net_eft}}'});
+        net_eft.push({label: '1st - 15th', y: {{request.net_eft_period_1}}, indexLabel: '${{request.net_eft_period_1}}'});
+        net_eft.push({label: '16th - End of Month', y: {{request.net_eft_period_2}}, indexLabel: '${{request.net_eft_period_2}}'});
     {% endfor %}
 
     var net_eft_kpi =[];
     {% for request in trainer %}
-        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_kpi}}});
+        net_eft_kpi.push({label: 'Overall Month', y: {{request.net_eft_kpi}}, indexLabel: '{{request.net_eft_kpi}}%'});
+        net_eft_kpi.push({label: '1st - 15th', y: {{request.net_eft_kpi_1}}, indexLabel: '{{request.net_eft_kpi_1}}%'});
+        net_eft_kpi.push({label: '16th - End of Month', y: {{request.net_eft_kpi_2}}, indexLabel: '{{request.net_eft_kpi_2}}%'});
     {% endfor %}
+
 
     var program =[];
     {% for request in trainer %}
-        program.push({label: '{{request.trainer}}', y: {{request.program.program}}});
+        program.push({label: 'Overall Month', y: {{request.program.program}}, indexLabel: '${{request.program.program}}'});
+        program.push({label: '1st - 15th', y: {{request.program_1}}, indexLabel: '${{request.program_1}}'});
+        program.push({label: '16th - End of Month', y: {{request.program_2}}, indexLabel: '${{request.program_2}}'});
     {% endfor %}
 
 
     var program_kpi =[];
     {% for request in trainer %}
-        program_kpi.push({label: '{{request.trainer}}', y: {{request.program_kpi}}});
+        program_kpi.push({label: 'Overall Month', y: {{request.program_kpi}}, indexLabel: '{{request.program_kpi}}%'});
+        program_kpi.push({label: '1st - 15th', y: {{request.program_kpi_1}}, indexLabel: '{{request.program_kpi_1}}%'});
+        program_kpi.push({label: '16th - End of Month', y: {{request.program_kpi_2}}, indexLabel: '{{request.program_kpi_2}}%'});
+    {% endfor %}
+
+
+    var request =[];
+    {% for request in appointment %}
+        request.push({label: 'Overall Month', y: {{request.requests.requests}}, indexLabel: '{{request.requests.requests}}'});
+        request.push({label: '1st - 15th', y: {{request.requests_period_1}}, indexLabel: '{{request.requests_period_1}}'});
+        request.push({label: '16th - End of Month', y: {{request.requests_period_2}}, indexLabel: '${{request.requests_period_2}}'});
+    {% endfor %}
+
+
+    var request_kpi =[];
+    {% for request in appointment %}
+        request_kpi.push({label: 'Overall Month', y: {{request.requests_kpi}}, indexLabel: '{{request.requests_kpi}}'});
+        request_kpi.push({label: '1st - 15th', y: {{request.requests_kpi_1}}, indexLabel: '{{request.requests_kpi_1}}'});
+        request_kpi.push({label: '16th - End of Month', y: {{request.requests_kpi_2}}, indexLabel: '${{request.requests_kpi_2}}'});
+    {% endfor %}
+
+    var scheduled =[];
+    {% for request in appointment %}
+        scheduled.push({label: 'Overall Month', y: {{request.scheduled.scheduled}}, indexLabel: '{{request.scheduled.scheduled}}'});
+        scheduled.push({label: '1st - 15th', y: {{request.scheduled_period_1}}, indexLabel: '{{request.scheduled_period_1}}'});
+        scheduled.push({label: '16th - End of Month', y: {{request.scheduled_period_2}}, indexLabel: '${{request.scheduled_period_2}}'});
+    {% endfor %}
+
+
+    var scheduled_kpi =[];
+    {% for request in appointment %}
+        scheduled_kpi.push({label: 'Overall Month', y: {{request.scheduled_kpi}}, indexLabel: '{{request.scheduled_kpi}}%'});
+        scheduled_kpi.push({label: '1st - 15th', y: {{request.scheduled_kpi_1}}, indexLabel: '{{request.scheduled_kpi_1}}%'});
+        scheduled_kpi.push({label: '16th - End of Month', y: {{request.scheduled_kpi_2}}, indexLabel: '${{request.scheduled_kpi_2}}%'});
+    {% endfor %}
+
+    var attended =[];
+    {% for request in appointment %}
+        attended.push({label: 'Overall Month', y: {{request.attended.attended}}, indexLabel: '{{request.attended.attended}}'});
+        attended.push({label: '1st - 15th', y: {{request.attended_period_1}}, indexLabel: '{{request.attended_period_1}}'});
+        attended.push({label: '16th - End of Month', y: {{request.attended_period_2}}, indexLabel: '${{request.attended_period_2}}'});
+    {% endfor %}
+
+
+    var attended_kpi =[];
+    {% for request in appointment %}
+        attended_kpi.push({label: 'Overall Month', y: {{request.attended_kpi}}, indexLabel: '{{request.attended_kpi}}%'});
+        attended_kpi.push({label: '1st - 15th', y: {{request.attended_kpi_1}}, indexLabel: '{{request.attended_kpi_1}}%'});
+        attended_kpi.push({label: '16th - End of Month', y: {{request.attended_kpi_2}}, indexLabel: '${{request.attended_kpi_2}}%'});
     {% endfor %}
 
 
@@ -78,11 +142,11 @@ window.onload = function () {
         title: "KPI",
         includeZero: false,
         suffix : "%",
-        lineColor: "#C24642"
+        lineColor: "#C1E1A6"
       },
-      axisX: {
-        title: "Sold by",
-      },
+{#      axisX: {#}
+{#        title: "Sold by",#}
+{#      },#}
       data: [{
         type: "column",
         toolTipContent: "Gross Sale: USD {y}",
@@ -93,8 +157,9 @@ window.onload = function () {
         dataPoints: gross
       },
       {
-        type: "line",
+        type: "column",
         axisYType: "secondary",
+        color: "#C1E1A6",
         toolTipContent: "KPI: {y}%",
     	legendText: "Goal Achievement %, KPI",
 	    showInLegend: true,
@@ -128,15 +193,15 @@ window.onload = function () {
         title: "KPI",
         includeZero: false,
         suffix : "%",
-        lineColor: "#C24642"
+        lineColor: "#C1E1A6"
       },
-      axisX: {
-        title: "Sold by",
-      },
+{#      axisX: {#}
+{#        title: "Sold by",#}
+{#      },#}
       data: [{
         type: "column",
         toolTipContent: "Cash Recieved: USD {y}",
-        color: "#C1E1A6",
+        color: "#74AFAD",
         indexLabelPlacement: "inside",
         indexLabelFontColor: "white",
     	legendText: "Cash Recieved",
@@ -144,7 +209,8 @@ window.onload = function () {
         dataPoints: cash
       },
       {
-        type: "line",
+        type: "column",
+        color: '#C1E1A6',
         axisYType: "secondary",
         toolTipContent: "KPI: {y}%",
     	legendText: "Goal Achievement %, KPI",
@@ -179,11 +245,11 @@ window.onload = function () {
         title: "KPI",
         includeZero: false,
         suffix : "%",
-        lineColor: "#C24642"
+        lineColor: "#C1E1A6"
       },
-      axisX: {
-        title: "Sold by",
-      },
+{#      axisX: {#}
+{#        title: "Sold by",#}
+{#      },#}
       data: [{
         type: "column",
         toolTipContent: "Net EFT: USD {y}",
@@ -195,8 +261,9 @@ window.onload = function () {
         dataPoints: net_eft
       },
       {
-        type: "line",
+        type: "column",
         axisYType: "secondary",
+        color: '#C1E1A6',
         toolTipContent: "KPI: {y}%",
     	legendText: "Goal Achievement %, KPI",
 	    showInLegend: true,
@@ -230,11 +297,11 @@ window.onload = function () {
         title: "KPI",
         includeZero: false,
         suffix : "%",
-        lineColor: "#C24642"
+        lineColor: "#C1E1A6"
       },
-      axisX: {
-        title: "Sold by",
-      },
+{#      axisX: {#}
+{#        title: "Sold by",#}
+{#      },#}
       data: [{
         type: "column",
         toolTipContent: "Net EFT: USD {y}",
@@ -246,7 +313,8 @@ window.onload = function () {
         dataPoints: program
       },
       {
-        type: "line",
+        type: "column",
+        color: '#C1E1A6',
         axisYType: "secondary",
         toolTipContent: "KPI: {y}%",
     	legendText: "Goal Achievement %, KPI",
@@ -258,6 +326,160 @@ window.onload = function () {
     });
 
     chart4.render();
+
+  var chart5 = new CanvasJS.Chart("chartContainer5",
+    {
+
+      title:{
+        text: "Consultation Requests"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Requests",
+        includeZero: false,
+        preffix : "Quantity",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C1E1A6"
+      },
+{#      axisX: {#}
+{#        title: "Staff",#}
+{#      },#}
+      data: [{
+        type: "column",
+        toolTipContent: "Requests: {y}",
+        color: "#62C9C3",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Requests",
+	    showInLegend: true,
+        dataPoints: request
+      },
+      {
+        type: "column",
+        axisYType: "secondary",
+        color: '#C1E1A6',
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: request_kpi
+      }
+
+      ]
+    });
+
+    chart5.render();
+
+
+  var chart6 = new CanvasJS.Chart("chartContainer6",
+    {
+
+      title:{
+        text: "Consultation Scheduled"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Scheduled Requests",
+        includeZero: false,
+        preffix : "Quantity",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C1E1A6"
+      },
+{#      axisX: {#}
+{#        title: "Staff",#}
+{#      },#}
+      data: [{
+        type: "column",
+        toolTipContent: "Scheduled Requests: {y}",
+        color: "#62C9C3",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Scheduled Requests",
+	    showInLegend: true,
+        dataPoints: scheduled
+      },
+      {
+        type: "column",
+        axisYType: "secondary",
+        color: '#C1E1A6',
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: scheduled_kpi
+      }
+
+      ]
+    });
+
+    chart6.render();
+
+  var chart7 = new CanvasJS.Chart("chartContainer7",
+    {
+
+      title:{
+        text: "Consultations Attended"
+
+      },
+      toolTip:{
+          shared: true
+      },
+
+      axisY:{
+        title: "Consultations Attended",
+        includeZero: false,
+        preffix : "Quantity",
+        lineColor: "#369EAD"
+      },
+      axisY2:{
+        title: "KPI",
+        includeZero: false,
+        suffix : "%",
+        lineColor: "#C1E1A6"
+      },
+{#      axisX: {#}
+{#        title: "Staff",#}
+{#      },#}
+      data: [{
+        type: "column",
+        toolTipContent: "Consultations Attended: {y}",
+        color: "#62C9C3",
+        indexLabelPlacement: "inside",
+        indexLabelFontColor: "white",
+    	legendText: "Consultations Attended",
+	    showInLegend: true,
+        dataPoints: attended
+      },
+      {
+        type: "column",
+        axisYType: "secondary",
+        color: '#C1E1A6',
+        toolTipContent: "KPI: {y}%",
+    	legendText: "Goal Achievement %, KPI",
+	    showInLegend: true,
+        dataPoints: attended_kpi
+      }
+
+      ]
+    });
+
+    chart7.render();
 
 
 
@@ -298,7 +520,7 @@ window.onload = function () {
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                     <i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i>  <h6 style="color: red"> Change Reporting Date</h6>
+                     <i class="fa fa-bar-chart fa-3x" aria-hidden="true"></i>  <h6 style="color: red"> Change Reporting Month</h6>
 
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
@@ -311,7 +533,7 @@ window.onload = function () {
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
 
             <div class="clearfix"></div>
@@ -361,6 +583,42 @@ window.onload = function () {
                   </div>
                   <div class="x_content">
                     <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Consultation Requests: Actual vs Target</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer5" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Consultation Scheduled: Actual vs Target</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer6" style="height: 350px; width: 100%;" align="center"> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Consultations Attended: Actual vs Target</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="chartContainer7" style="height: 350px; width: 100%;" align="center"> </div>
                   </div>
                 </div>
               </div>

@@ -40,7 +40,7 @@ class Client(models.Model):
     eft_loss = models.FloatField()
     lead_source = models.ForeignKey(Lead)
     date_input = models.DateField(default=timezone.now, blank=False)
-    sold_by = models.ForeignKey(Trainer)
+    sold_by = models.ForeignKey(Trainer, default=2)
     note1 = models.CharField(max_length=100, blank=True)
     note2 = models.CharField(max_length=100, blank=True)
     note3 = models.TextField(blank=True)

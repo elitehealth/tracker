@@ -9,15 +9,13 @@ class SalesForm(forms.ModelForm):
         model = Record
         fields = [
             'date',
-            'consults_attended',
-            'consults_closed',
             'gross_sale',
             'cash_recieved',
             'eft_added',
             'eft_loss',
+            'sold_by',
             'note1',
             'note2',
-            'note3'
         ]
 
 

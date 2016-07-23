@@ -57,37 +57,56 @@
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Current Month: {{ reporting_date }}</h1></div>
             </div>
             <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Current Progress of Gross Sale </h2>
+                    <h2> Progress of Gross Sale </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the current gap of "gross sale" monthly target, and the required changes to achieve target. </p>
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>Trainer</th>
-                          <th>Average Current Gross Sale Amount</th>
-                          <th>Gap to Achieve Monthly Target</th>
+                          <th>Period</th>
+                          <th>Gross Sale Amount</th>
+                          <th>Gap to Achieve Target</th>
                           <th>Required Daily Gross Sale to Achieve Target </th>
                           <th>Required Daily Gross Sale Increase, % </th>
                         </tr>
                       </thead>
                        <tbody>
-                        {% for request in sales_trainer%}
-                       <td> {{ request.trainer  }}</td>
-                       <td> {{ request.gross_speed  }}</td>
-                       <td> {{ request.gross_gap }}</td>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.gross_sale }}</td>
+                       <td style="color: red"> {{ request.gross_gap }}</td>
                        <td> {{ request.gross_speed_required }}</td>
                        <td> {{ request.gross_speed_increase }}</td>
-                       </tbody>
                        {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.gross_period_1  }}</td>
+                       <td style="color: red"> {{ request.gross_gap_1 }}</td>
+                       <td> {{ request.gross_speed_required_1 }}</td>
+                       <td> {{ request.gross_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.gross_period_2  }}</td>
+                       <td style="color: red"> {{ request.gross_gap_2 }}</td>
+                       <td> {{ request.gross_speed_required_2 }}</td>
+                       <td> {{ request.gross_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
+
                     </table>
                   </div>
                 </div>
@@ -96,31 +115,51 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Current Progress of Cash Recieved </h2>
+                    <h2>Progress of Cash Recieved </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the current gap of "cash recieved" monthly target, and the required changes to achieve target. </p>
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the current gap of "cash recieved" monthly target, and the required changes to achieve target. </p>#}
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>Trainer</th>
-                          <th>Average Current Cash Receieved Amount</th>
-                          <th>Gap to Achieve Monthly Target</th>
+                          <th>Period</th>
+                          <th>Cash Recieved Amount</th>
+                          <th>Gap to Achieve Target</th>
                           <th>Required Daily Cash Collection to Achieve Target </th>
                           <th>Required Daily Cash Collection Increase, % </th>
                         </tr>
                       </thead>
                        <tbody>
-                        {% for request in sales_trainer%}
-                       <td> {{ request.trainer  }}</td>
-                       <td> {{ request.cash_speed  }}</td>
-                       <td> {{ request.cash_gap }}</td>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.cash }}</td>
+                       <td style="color: red"> {{ request.cash_gap }}</td>
                        <td> {{ request.cash_speed_required }}</td>
                        <td> {{ request.cash_speed_increase }}</td>
-                       </tbody>
                        {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.cash_period_1  }}</td>
+                       <td style="color: red"> {{ request.cash_gap_1 }}</td>
+                       <td> {{ request.cash_speed_required_1 }}</td>
+                       <td> {{ request.cash_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.cash_period_2  }}</td>
+                       <td style="color: red"> {{ request.cash_gap_2 }}</td>
+                       <td> {{ request.cash_speed_required_2 }}</td>
+                       <td> {{ request.cash_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
+
                     </table>
                   </div>
                 </div>
@@ -129,31 +168,49 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Current Progress of Net EFT Added </h2>
+                    <h2> Progress of Net EFT Added </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the current gap of "Net EFT Added" monthly target, and the required changes to achieve target. </p>
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>Trainer</th>
-                          <th>Current Average Net EFT Added</th>
+                          <th>Period</th>
+                          <th>Net EFT Added</th>
                           <th>Gap to Achieve Monthly Target</th>
                           <th>Required Daily Net EFT Added to Achieve Target </th>
                           <th>Required Daily "Net EFT Added" Increase, % </th>
                         </tr>
                       </thead>
                        <tbody>
-                        {% for request in sales_trainer%}
-                       <td> {{ request.trainer  }}</td>
-                       <td> {{ request.net_eft_speed  }}</td>
-                       <td> {{ request.net_eft_gap }}</td>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.net_eft }}</td>
+                       <td style="color: red"> {{ request.net_eft_gap }}</td>
                        <td> {{ request.net_eft_speed_required }}</td>
                        <td> {{ request.net_eft_speed_increase }}</td>
-                       </tbody>
                        {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.net_eft_period_1  }}</td>
+                       <td style="color: red"> {{ request.net_eft_gap_1 }}</td>
+                       <td> {{ request.net_eft_speed_required_1 }}</td>
+                       <td> {{ request.net_eft_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.net_eft_period_2  }}</td>
+                       <td style="color: red"> {{ request.net_eft_gap_2 }}</td>
+                       <td> {{ request.net_eft_speed_required_2 }}</td>
+                       <td> {{ request.net_eft_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
                     </table>
                   </div>
                 </div>
@@ -162,35 +219,200 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Current Progress of Sold Programs </h2>
+                    <h2> Progress of Consultation Requests </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the current gap of "programs sold" monthly target, and the required changes to achieve target. </p>
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>Trainer</th>
-                          <th>Current Daily Average Sold Programs Quantity</th>
+                          <th>Period</th>
+                          <th>Consultation Requests</th>
                           <th>Gap to Achieve Monthly Target</th>
-                          <th>Required Daily Sold Quantity to Achieve Target </th>
-                          <th>Required Daily Solq Quantity Increase, % </th>
+                          <th>Required Daily Requests to Achieve Target </th>
+                          <th>Required Daily "Requests" Increase, % </th>
                         </tr>
                       </thead>
                        <tbody>
-                        {% for request in sales_trainer%}
-                       <td> {{ request.trainer  }}</td>
-                       <td> {{ request.program_speed  }}</td>
-                       <td> {{ request.program_gap }}</td>
-                       <td> {{ request.program_speed_required }}</td>
-                       <td> {{ request.program_speed_increase }}</td>
-                       </tbody>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.requests }}</td>
+                       <td style="color: red"> {{ request.requests_gap }}</td>
+                       <td> {{ request.requests_speed_required }}</td>
+                       <td> {{ request.requests_speed_increase }}</td>
                        {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.requests_period_1  }}</td>
+                       <td style="color: red"> {{ request.requests_gap_1 }}</td>
+                       <td> {{ request.requests_speed_required_1 }}</td>
+                       <td> {{ request.requests_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.requests_period_2  }}</td>
+                       <td style="color: red"> {{ request.requests_gap_2 }}</td>
+                       <td> {{ request.requests_speed_required_2 }}</td>
+                       <td> {{ request.requests_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
                     </table>
                   </div>
                 </div>
             </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2> Progress of Consultations Scheduled </h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Period</th>
+                          <th>Consultations Scheduled</th>
+                          <th>Gap to Achieve Monthly Target</th>
+                          <th>Required Daily Scheduled Consultations to Achieve Target </th>
+                          <th>Required Daily "Schedules" Increase, % </th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.scheduled }}</td>
+                       <td style="color: red"> {{ request.scheduled_gap }}</td>
+                       <td> {{ request.scheduled_speed_required }}</td>
+                       <td> {{ request.scheduled_speed_increase }}</td>
+                       {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.scheduled_period_1  }}</td>
+                       <td style="color: red"> {{ request.scheduled_gap_1 }}</td>
+                       <td> {{ request.scheduled_speed_required_1 }}</td>
+                       <td> {{ request.scheduled_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.scheduled_period_2  }}</td>
+                       <td style="color: red"> {{ request.scheduled_gap_2 }}</td>
+                       <td> {{ request.scheduled_speed_required_2 }}</td>
+                       <td> {{ request.scheduled_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2> Progress of Shows </h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Period</th>
+                          <th>Shows</th>
+                          <th>Gap to Achieve Monthly Target</th>
+                          <th>Required Daily Shows to Achieve Target </th>
+                          <th>Required Daily "Shows" Increase, % </th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.attended }}</td>
+                       <td style="color: red"> {{ request.attended_gap }}</td>
+                       <td> {{ request.attended_speed_required }}</td>
+                       <td> {{ request.attended_speed_increase }}</td>
+                       {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.attended_period_1  }}</td>
+                       <td style="color: red"> {{ request.attended_gap_1 }}</td>
+                       <td> {{ request.attended_speed_required_1 }}</td>
+                       <td> {{ request.attended_speed_increase_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.attended_period_2  }}</td>
+                       <td style="color: red"> {{ request.attended_gap_2 }}</td>
+                       <td> {{ request.attended_speed_required_2 }}</td>
+                       <td> {{ request.attended_speed_increase_2 }}</td>
+                       {% endfor %}
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2> Info on Closed </h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Period</th>
+                          <th>Closed Info</th>
+                          <th>Daily Average Closed </th>
+
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> Overall Month</td>
+                       <td> {{ request.closed }}</td>
+                       <td> {{ request.closed_speed }}</td>
+                       {% endfor %}
+                       </tbody>
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 1st-15th</td>
+                       <td> {{ request.closed_period_1  }}</td>
+                       <td> {{ request.closed_speed_1 }}</td>
+                       {% endfor %}
+                       </tbody>
+
+                       <tbody>
+                        {% for request in sales_sum%}
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.closed_period_2  }}</td>
+                       <td> {{ request.closed_speed_2 }}</td>
+                       {% endfor %}
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
 
 
             </div>

@@ -17,50 +17,46 @@ window.onload = function () {
 
     var gross =[];
     {% for request in sales_sum %}
-        gross.push({label: 'Overall Month', y: {{request.gross_sale}}, indexLabel: '${{request.gross_sale}}'});
         gross.push({label: '1st-15th', y: {{request.gross_period_1}},  indexLabel: '${{request.gross_period_1}}' });
         gross.push({label: '16th-End of Month', y: {{request.gross_period_2}}, indexLabel: '${{request.gross_period_2}}' });
+        gross.push({label: 'Overall Month', y: {{request.gross_sale}}, indexLabel: '${{request.gross_sale}}'});
     {% endfor %}
 
 
     var cash =[];
     {% for request in sales_sum %}
-        cash.push({label: 'Overall Month', y: {{request.cash}}, indexLabel: '${{request.cash}}'});
         cash.push({label: '1st-15th', y: {{request.cash_period_1}}, indexLabel: '${{request.cash_period_1}}'});
         cash.push({label: '16th-End of Month', y: {{request.cash_period_2}}, indexLabel: '${{request.cash_period_2}}'});
+        cash.push({label: 'Overall Month', y: {{request.cash}}, indexLabel: '${{request.cash}}'});
 
     {% endfor %}
 
     var net_eft_added =[];
     {% for request in sales_sum %}
-        net_eft_added.push({label: 'Overall Month', y: {{request.net_eft}}, indexLabel: '${{request.net_eft}}'});
         net_eft_added.push({label: '1st-15th', y: {{request.net_eft_period_1}}, indexLabel: '${{request.net_eft_period_1}}'});
         net_eft_added.push({label: '16th-End of Month', y: {{request.net_eft_period_2}}, indexLabel: '${{request.net_eft_period_2}}'});
+        net_eft_added.push({label: 'Overall Month', y: {{request.net_eft}}, indexLabel: '${{request.net_eft}}'});
 
     {% endfor %}
 
     var sum =[];
+    sum.push({y: {{ sales_sum.request}}, label: "Requests", indexLabel: '{{ sales_sum.request}}'});
+    sum.push({y: {{ sales_sum.scheduled}}, label: "Scheduled ", indexLabel: '{{ sales_sum.scheduled}}'});
+    sum.push({y: {{ sales_sum.attended}}, label: "Attended", indexLabel: '{{ sales_sum.attended}}'});
+    sum.push({y: {{ sales_sum.closed}}, label: "Closed", indexLabel: '{{ sales_sum.closed}}'});
+
+
     var sum_1 =[];
+    sum_1.push({y: {{ sales_sum.request_period_1}}, label: "Requests", indexLabel: '{{ sales_sum.request_period_1}}'});
+    sum_1.push({y: {{ sales_sum.scheduled_period_1}}, label: "Scheduled ", indexLabel: '{{ sales_sum.scheduled_period_1}}'});
+    sum_1.push({y: {{ sales_sum.attended_period_1}}, label: "Attended", indexLabel: '{{ sales_sum.attended_period_1}}'});
+    sum_1.push({y: {{ sales_sum.closed_period_1}}, label: "Closed", indexLabel: '{{ sales_sum.closed_period_1}}'});
+
     var sum_2 =[];
-
-    {% for request in sales_sum %}
-
-    sum.push({y: {{ request.request}}, label: "Requests", indexLabel: '{{request.request}}'});
-    sum.push({y: {{ request.scheduled}}, label: "Scheduled ", indexLabel: '{{ request.scheduled}}'});
-    sum.push({y: {{ request.attended}}, label: "Attended", indexLabel: '{{request.attended}}'});
-    sum.push({y: {{ request.closed}}, label: "Closed", indexLabel: '{{request.closed}}'});
-
-
-    sum_1.push({y: {{request.request_period_1}}, label: "Requests", indexLabel: '{{ request.request_period_1}}'});
-    sum_1.push({y: {{request.scheduled_period_1}}, label: "Scheduled ", indexLabel: '{{ request.scheduled_period_1}}'});
-    sum_1.push({y: {{request.attended_period_1}}, label: "Attended", indexLabel: '{{ request.attended_period_1}}'});
-    sum_1.push({y: {{request.closed_period_1}}, label: "Closed", indexLabel: '{{request.closed_period_1}}'});
-
-    sum_2.push({y: {{request.request_period_2}}, label: "Requests", indexLabel: '{{request.request_period_2}}'});
-    sum_2.push({y: {{request.scheduled_period_2}}, label: "Scheduled ", indexLabel: '{{request.scheduled_period_2}}'});
-    sum_2.push({y: {{request.attended_period_2}}, label: "Attended", indexLabel: '{{request.attended_period_2}}'});
-    sum_2.push({y: {{request.closed_period_2}}, label: "Closed", indexLabel: '{{request.closed_period_2}}'});
-    {% endfor %}
+    sum_2.push({y: {{ sales_sum.request_period_2}}, label: "Requests", indexLabel: '{{ sales_sum.request_period_2}}'});
+    sum_2.push({y: {{ sales_sum.scheduled_period_2}}, label: "Scheduled ", indexLabel: '{{ sales_sum.scheduled_period_2}}'});
+    sum_2.push({y: {{ sales_sum.attended_period_2}}, label: "Attended", indexLabel: '{{ sales_sum.attended_period_2}}'});
+    sum_2.push({y: {{ sales_sum.closed_period_2}}, label: "Closed", indexLabel: '{{ sales_sum.closed_period_2}}'});
 
 
   var chart1 = new CanvasJS.Chart("chartContainer1",
@@ -126,7 +122,7 @@ window.onload = function () {
             title: {
                 text: "Overall Month",
                 fontColor: "Peru",
-                fontSize: 20
+                fontSize: 24
 
             },
             animationEnabled: true,
@@ -146,11 +142,11 @@ window.onload = function () {
             data: [
             {
                 indexLabelFontSize: 26,
-                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}</strong></span>",
+                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}%</strong></span>",
 
-                indexLabelPlacement: "outside",
-                indexLabelFontColor: "black",
-                indexLabelFontWeight: 400,
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: 600,
                 color: "#62C9C3",
                 type: "bar",
                 dataPoints: sum
@@ -164,7 +160,7 @@ window.onload = function () {
             title: {
                 text: "1st - 15th",
                 fontColor: "Peru",
-                fontSize: 20
+                fontSize: 24
 
             },
             animationEnabled: true,
@@ -184,11 +180,11 @@ window.onload = function () {
             data: [
             {
                 indexLabelFontSize: 26,
-                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}</strong></span>",
+                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}%</strong></span>",
 
-                indexLabelPlacement: "outside",
-                indexLabelFontColor: "black",
-                indexLabelFontWeight: 400,
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: 600,
                 color: "#62C9C3",
                 type: "bar",
                 dataPoints: sum_1
@@ -202,7 +198,7 @@ window.onload = function () {
             title: {
                 text: "16th - End of Month",
                 fontColor: "Peru",
-                fontSize: 20
+                fontSize: 24
 
             },
             animationEnabled: true,
@@ -222,11 +218,11 @@ window.onload = function () {
             data: [
             {
                 indexLabelFontSize: 26,
-                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}</strong></span>",
+                toolTipContent: "<span style='\"'color: {color};'\"'><strong>{label} </strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong>{y}%</strong></span>",
 
-                indexLabelPlacement: "outside",
-                indexLabelFontColor: "black",
-                indexLabelFontWeight: 400,
+                indexLabelPlacement: "inside",
+                indexLabelFontColor: "white",
+                indexLabelFontWeight: 600,
                 color: "#62C9C3",
                 type: "bar",
                 dataPoints: sum_2
@@ -379,12 +375,13 @@ window.onload = function () {
               <div style="color: red" class="count">{{ request.closed }}</div>
               <span class="count_bottom"><i class="red">{{ request.closed_speed }} </i> Daily Closed Consultations </span>
                {% else %}
-              <div  class="count green">{{ request.closed }}</div>
+              <div style="color: green" class="count green">{{ request.closed }}</div>
               <span class="count_bottom"><i class="red">{{ request.closed_speed }} </i> Daily Closed Consultations </span>
                {% endif %}
             </div>
-          </div>
             {% endfor %}
+          </div>
+        </div>
 
 
 
@@ -396,13 +393,13 @@ window.onload = function () {
 
                 <div class="row x_title">
                   <div class="col-md-12">
-                    <h3>Current Month Results </h3>
+                    <h3>Gross Sale, Cash and Net EFT  </h3>
                   </div>
                 </div>
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div style="width: 100%;">
-                    <div id="chartContainer1" style="height: 300px; width: 100%;" align="center"> </div>
+                    <div id="as" style="height: 300px; width: 100%;" align="center"> </div>
                     <div class="clearfix"></div>
                   </div>
                 </div>
@@ -415,50 +412,46 @@ window.onload = function () {
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="dashboard_graph">
-
-
-          <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="dashboard_graph">
-                <div class="x_content">
-                  <div style="width: 100%;">
-                    <div id="chartContainer2" style="height: 200px; width: 100%;" align="center"> </div>
+                <div class="row x_title">
+                <h3>Consultation Requests, Scheduled, Showed and Closed  </h3>
+        </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                      <div class="x_panel">
+                  <div class="x_content">
+                    <div id="chartContainer2" style="height: 350px; width: 100%;" align="center"> </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="dashboard_graph">
-                <div class="x_content">
-                  <div style="width: 100%;">
-                    <div id="chartContainer3" style="height: 200px; width: 100%;" align="center"> </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                      <div class="x_panel">
+                  <div class="x_content">
+                    <div id="chartContainer3" style="height: 350px; width: 100%;" align="center"> </div>
                   </div>
                 </div>
-              </div>
-            </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                      <div class="x_panel">
 
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="dashboard_graph">
-                <div class="x_content">
-                  <div style="width: 100%;">
-                    <div id="chartContainer4" style="height: 200px; width: 100%;" align="center"> </div>
+                  <div class="x_content">
+                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
+                  </div>
 
             </div>
           </div>
         </div>
-
+    </div>
 
         <!-- /page content -->
 
-      </div>
-    </div>
+        <!-- footer content -->
+{#        <footer>#}
+{#          <div class="pull-right">#}
+{#            Copyright &copy; Elite Health 2016     </div>#}
+{#          <div class="clearfix"></div>#}
+{#        </footer>#}
+        <!-- /footer content -->
     <!-- jQuery -->
     <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
     <!-- Bootstrap -->
@@ -477,7 +470,6 @@ window.onload = function () {
 
 
     <script type="text/javascript" src="{% static 'js/canvasjs/canvasjs.min.js'%}"></script>
-  </div>
-
+      </div>
   </body>
 </html>

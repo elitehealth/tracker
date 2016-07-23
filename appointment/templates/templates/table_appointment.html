@@ -44,7 +44,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Date</h6>
+                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Month</h6>
 
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
@@ -57,7 +57,7 @@
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -70,26 +70,45 @@
                   <div class="x_content">
                     <p class="text-muted font-13 m-b-30"> The report shows the percentages of shows, rescheduled, cancelled,no-shows and closed appointments.  </p>
                     <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Indicators</th>
+                          <th>Overall Month</th>
+                          <th>1st-15th</th>
+                          <th>16th - End of Month</th>
+                        </tr>
+                        </thead>
                         <tr>
                           <th>Percentage of Shows</th>
                             <td>{{ tracking_info.shows_percentage}}%</td>
+                            <td>{{ tracking_info.shows_percentage_1}}%</td>
+                            <td>{{ tracking_info.shows_percentage_2}}%</td>
                         </tr>
                         <tr>
                           <th>Percentage of Cancelled Appointments</th>
                             <td>{{ tracking_info.cancelled}}%</td>
+                            <td>{{ tracking_info.cancelled_1}}%</td>
+                            <td>{{ tracking_info.cancelled_2}}%</td>
                         </tr>
                         <tr>
                           <th>Percentage of Closed</th>
                             <td>{{ tracking_info.closed}}%</td>
+                            <td>{{ tracking_info.closed_1}}%</td>
+                            <td>{{ tracking_info.closed_2}}%</td>
                         </tr>
                         <tr>
                           <th>Percentage of No Shows</th>
                             <td>{{ tracking_info.no_show}}%</td>
+                            <td>{{ tracking_info.no_show_1}}%</td>
+                            <td>{{ tracking_info.no_show_2}}%</td>
                         </tr>
 
                         <tr>
                           <th>Percentage of Rescheduled Appointments</th>
                             <td>{{ tracking_info.rescheduled}}%</td>
+                            <td>{{ tracking_info.rescheduled_1}}%</td>
+                            <td>{{ tracking_info.rescheduled_2}}%</td>
+
                         </tr>
 {#                       <td> {{ request.eft_added }}</td>#}
 {#                       <td> {{ request.eft_loss }}</td>#}
@@ -110,32 +129,45 @@
                   <div class="x_content">
                     <p class="text-muted font-13 m-b-30"> The report shows the number of requests, showed, rescheduled, cancelled appointments, etc.   </p>
                     <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Indicators</th>
+                          <th>Overall Month</th>
+                          <th>1st-15th</th>
+                          <th>16th - End of Month</th>
+                        </tr>
+                        </thead>
                         <tr>
                           <th>Number of Consults Attended</th>
                             <td>{{ tracking_sum.shows}}</td>
+                            <td>{{ tracking_sum.shows_1}}</td>
+                            <td>{{ tracking_sum.shows_2}}</td>
                         </tr>
                         <tr>
                           <th>Cancelled Appointments</th>
                             <td>{{ tracking_sum.cancelled}}</td>
+                            <td>{{ tracking_sum.cancelled_1}}</td>
+                            <td>{{ tracking_sum.cancelled_2}}</td>
                         </tr>
                         <tr>
                           <th>Closed Appointments</th>
                             <td>{{ tracking_sum.closed}}</td>
+                            <td>{{ tracking_sum.closed_1}}</td>
+                            <td>{{ tracking_sum.closed_2}}</td>
                         </tr>
                         <tr>
                           <th>Number of No Shows</th>
                             <td>{{ tracking_sum.no_show}}</td>
+                            <td>{{ tracking_sum.no_show_1}}</td>
+                            <td>{{ tracking_sum.no_show_2}}</td>
                         </tr>
 
                         <tr>
                           <th> Rescheduled Appointments</th>
                             <td>{{ tracking_sum.rescheduled}}</td>
+                            <td>{{ tracking_sum.rescheduled_1}}</td>
+                            <td>{{ tracking_sum.rescheduled_2}}</td>
                         </tr>
-{#                       <td> {{ request.eft_added }}</td>#}
-{#                       <td> {{ request.eft_loss }}</td>#}
-{#                       <td> {{ request.daily_sales }}</td>#}
-
-
                     </table>
                   </div>
                 </div>

@@ -44,7 +44,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Date</h6>
+                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Month</h6>
 
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
@@ -57,7 +57,7 @@
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
             <div class="row">
 {#              <div class="col-md-12 col-sm-12 col-xs-12">#}
@@ -106,16 +106,18 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Target vs Actual </h2>
+                    <h2>Sales Target vs Actual </h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the actual achievements versus targets per each trainer/sold person. </p>
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the actual achievements versus targets for sales. </p>#}
+                        {% for request in trainer%}
+                    <h5 style="color: #0D3349"> Trainer: {{ request.trainer }}</h5>
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                          <th>Trainer</th>
+                          <th>Period</th>
                           <th>Gross Sale Target</th>
                           <th>Gross Sale, KPI, %</th>
                           <th>Cash Target</th>
@@ -128,9 +130,8 @@
 
                         </tr>
                       </thead>
-                        {% for request in trainer%}
                        <tbody>
-                       <td> {{ request.trainer  }}</td>
+                       <td> Overall Month</td>
                        <td> {{ request.gross_target.gross_target }}</td>
                             {% if  request.gross_kpi <= 90 %}
                        <td style="color: red; font-style: italic"> {{ request.gross_kpi }}</td>
@@ -153,15 +154,162 @@
                             {% if  request.program_kpi <= 90 %}
                        <td style="color: red; font-style: italic"> {{ request.program_kpi }}</td>
                             {% else %}
-                       <td> {{ program.gross_kpi }}</td>
+                       <td> {{ request.program_kpi }}</td>
                             {% endif %}
-                       {% endfor %}
+                       </tbody>
+                       <tbody>
+                       <td> 1st-15th</td>
+                       <td> {{ request.gross_target_1.gross_target_1}}</td>
+                            {% if  request.gross_kpi_1 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.gross_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.gross_kpi_1 }}</td>
+                            {% endif %}
+                       <td> {{ request.cash_target_1.cash_target_1 }}</td>
+                            {% if  request.cash_kpi_1  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.cash_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.cash_kpi_1 }}</td>
+                            {% endif %}
+                       <td> {{ request.net_eft_target_1.net_eft_target_1 }}</td>
+                            {% if  request.net_eft_kpi_1 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.net_eft_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.net_eft_kpi_1 }}</td>
+                            {% endif %}
+                       <td> {{ request.program_target_1.program_target_1 }}</td>
+                            {% if  request.program_kpi_1 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.program_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.program_kpi_1 }}</td>
+                            {% endif %}
+                       </tbody>
+                       <tbody>
+                       <td> 16th-End of Month</td>
+                       <td> {{ request.gross_target_2.gross_target_2}}</td>
+                            {% if  request.gross_kpi_2 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.gross_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.gross_kpi_2 }}</td>
+                            {% endif %}
+                       <td> {{ request.cash_target_2.cash_target_2 }}</td>
+                            {% if  request.cash_kpi_2  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.cash_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.cash_kpi_2 }}</td>
+                            {% endif %}
+                       <td> {{ request.net_eft_target_2.net_eft_target_2 }}</td>
+                            {% if  request.net_eft_kpi_2 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.net_eft_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.net_eft_kpi_2 }}</td>
+                            {% endif %}
+                       <td> {{ request.program_target_2.program_target_2 }}</td>
+                            {% if  request.program_kpi_2 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.program_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.program_kpi_2 }}</td>
+                            {% endif %}
                        </tbody>
                     </table>
+                       {% endfor %}
                   </div>
                 </div>
               </div>
 
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Consultations Target vs Actual </h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the actual achievements versus targets for sales. </p>#}
+                        {% for request in appointment%}
+                    <h5 style="color: #0D3349"> Staff: {{ request.person }}</h5>
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Period</th>
+                          <th>Consultation Requests Target</th>
+                          <th>Requests, KPI, %</th>
+                          <th>Scheduled Requests Target</th>
+                          <th>Scheduled Requests, KPI, %</th>
+                          <th>Attended Target</th>
+                          <th>Attended, KPI, %</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                       <td> Overall Month</td>
+                       <td> {{ request.requests_target.requests_target }}</td>
+                            {% if  request.requests_kpi <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.requests_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.requests_kpi }}</td>
+                            {% endif %}
+                       <td> {{ request.scheduled_target.scheduled_target }}</td>
+                            {% if  request.scheduled_kpi  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.scheduled_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.scheduled_kpi }}</td>
+                            {% endif %}
+                       <td> {{ request.attended_target.attended_target }}</td>
+                            {% if  request.attended_kpi <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.attended_kpi }}</td>
+                            {% else %}
+                       <td> {{ request.attended_kpi }}</td>
+                            {% endif %}
+                       </tbody>
+                       <tbody>
+                       <td> 1st-15th</td>
+                       <td> {{ request.requests_target_1.requests_target_1}}</td>
+                            {% if  request.requests_kpi_1 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.requests_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.requests_kpi_1 }}</td>
+                            {% endif %}
+                       <td> {{ request.scheduled_target_1.scheduled_target_1 }}</td>
+                            {% if  request.scheduled_kpi_1  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.scheduled_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.scheduled_kpi_1 }}</td>
+                            {% endif %}
+                       <td> {{ request.attended_target_1.attended_target_1 }}</td>
+                            {% if  request.attended_kpi_1 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.attended_kpi_1 }}</td>
+                            {% else %}
+                       <td> {{ request.attended_kpi_1 }}</td>
+                            {% endif %}
+                       </tbody>
+                       <tbody>
+                       <td> 16th - End of Month</td>
+                       <td> {{ request.requests_target_2.requests_target_2}}</td>
+                            {% if  request.requests_kpi_2 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.requests_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.requests_kpi_2 }}</td>
+                            {% endif %}
+                       <td> {{ request.scheduled_target_2.scheduled_target_2 }}</td>
+                            {% if  request.scheduled_kpi_2  <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.scheduled_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.scheduled_kpi_2 }}</td>
+                            {% endif %}
+                       <td> {{ request.attended_target_2.attended_target_2 }}</td>
+                            {% if  request.attended_kpi_2 <= 90 %}
+                       <td style="color: red; font-style: italic"> {{ request.attended_kpi_2 }}</td>
+                            {% else %}
+                       <td> {{ request.attended_kpi_2 }}</td>
+                            {% endif %}
+                       </tbody>
+
+                    </table>
+                       {% endfor %}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

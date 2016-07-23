@@ -14,6 +14,9 @@ class AppointmentForm(forms.ModelForm):
             'consultations_cancelled',
             'consultations_closed',
             'consultations_no_show',
-            'consultations_rescheduled'
+            'consultations_rescheduled',
+            'consultations_attended',
+            'input_by',
+            'note1',
         ]
 

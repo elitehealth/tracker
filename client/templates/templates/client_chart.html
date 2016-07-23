@@ -17,33 +17,50 @@ window.onload = function () {
 
     var gross =[];
     {% for request in sales_lead %}
-        gross.push({label: '{{request.lead}}', y: {{request.gross.sales}}});
+        gross.push({label: '{{request.lead}}', y: {{request.gross.sales}},indexLabel: '${{request.gross.sales}}'});
     {% endfor %}
+
+    var gross_date =[];
+    {% for request in sales_date %}
+        gross_date.push({label: '{{request.date}}', y: {{request.gross.sales}}});
+    {% endfor %}
+
 
     var cash =[];
     {% for request in sales_lead %}
-        cash.push({label: '{{request.lead}}', y: {{request.cash.cash}}});
+        cash.push({label: '{{request.lead}}', y: {{request.cash.cash}}, indexLabel:'${{request.cash.cash}}'});
     {% endfor %}
+
+    var cash_date =[];
+    {% for request in sales_date %}
+        cash_date.push({label: '{{request.date}}', y: {{request.cash.cash}}});
+    {% endfor %}
+
 
     var eft =[];
     {% for request in sales_lead %}
-        eft.push({label: '{{request.lead}}', y: {{request.eft.eft}}});
+        eft.push({label: '{{request.lead}}', y: {{request.eft.eft}},indexLabel: '${{request.eft.eft}}'});
+    {% endfor %}
+
+    var net_eft_date =[];
+    {% for request in sales_date %}
+        net_eft_date.push({label: '{{request.date}}', y: {{request.eft_added.eft_added}}-{{request.eft_loss.eft_loss}}});
     {% endfor %}
 
 
     var trainer_gross =[];
     {% for request in sales_trainer %}
-        trainer_gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}});
+        trainer_gross.push({label: '{{request.trainer}}', y: {{request.gross.sales}}, indexLabel: '${{request.gross.sales}}' });
     {% endfor %}
 
     var trainer_cash =[];
     {% for request in sales_trainer %}
-        trainer_cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}});
+        trainer_cash.push({label: '{{request.trainer}}', y: {{request.cash.cash}}, indexLabel: '${{request.cash.cash}}'});
     {% endfor %}
 
     var trainer_eft =[];
     {% for request in sales_trainer %}
-        trainer_eft.push({label: '{{request.trainer}}', y: {{request.eft.eft}}});
+        trainer_eft.push({label: '{{request.trainer}}', y: {{request.eft.eft}}, indexLabel: '${{request.eft.eft}}'});
     {% endfor %}
 
 
@@ -57,6 +74,59 @@ window.onload = function () {
     {% for request in sales_client %}
         client_gross.push({y: {{request.gross.sales}}, label: '{{request.client}}' });
     {% endfor %}
+
+{#var chart0 = new CanvasJS.Chart("chartContainer0",#}
+{#    {#}
+{#            animationEnabled: true,#}
+{#			toolTip: {#}
+{#				shared: true#}
+{#			},#}
+{#    		axisX:{#}
+{#            labelMaxWidth: 160,#}
+{#            labelWrap: true,#}
+{#            labelFontColor: "black",#}
+{#            labelFontWeight: "bold",#}
+{#            labelFontSize: 12#}
+{#        },#}
+{#			axisY: {#}
+{#				title: "USD"#}
+{#			},#}
+{#			data: [#}
+{#			{#}
+{#				type: "column",#}
+{#				name: "Gross Sales",#}
+{#                color: "#C1E1A6",#}
+{#                indexLabelPlacement: "inside",#}
+{#                indexLabelFontColor: "white",#}
+{#				legendText: "Gross Sales",#}
+{#				showInLegend: true,#}
+{#				dataPoints: gross_date#}
+{#			},#}
+{#			{#}
+{#				type: "column",#}
+{#                color: "gold",#}
+{#                indexLabelPlacement: "inside",#}
+{#                indexLabelFontColor: "white",#}
+{#				name: "Cash",#}
+{#				legendText: "Cash",#}
+{#				showInLegend: true,#}
+{#				dataPoints: cash_date#}
+{#			},#}
+{#			{#}
+{#				type: "column",#}
+{#                color: "#558C89",#}
+{#                indexLabelPlacement: "inside",#}
+{#                indexLabelFontColor: "white",#}
+{#				name: "Net EFT",#}
+{#				legendText: "Net EFT",#}
+{#				showInLegend: true,#}
+{#				dataPoints: net_eft_date#}
+{#			}#}
+{##}
+{#			]#}
+{#        });#}
+{##}
+{#    chart0.render();#}
 
 
 var chart1 = new CanvasJS.Chart("chartContainer1",
@@ -80,8 +150,8 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
 				type: "column",
 				name: "Gross Sales",
                 color: "#C1E1A6",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				legendText: "Gross Sales",
 				showInLegend: true,
 				dataPoints: gross
@@ -89,8 +159,8 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
 			{
 				type: "column",
                 color: "gold",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				name: "Cash",
 				legendText: "Cash",
 				showInLegend: true,
@@ -99,8 +169,8 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
 			{
 				type: "column",
                 color: "#558C89",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				name: "EFT",
 				legendText: "EFT",
 				showInLegend: true,
@@ -111,6 +181,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1",
         });
 
     chart1.render();
+
 
 var chart2 = new CanvasJS.Chart("chartContainer2", {
 
@@ -133,8 +204,8 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 				type: "column",
 				name: "Gross Sales",
                 color: "#C1E1A6",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				legendText: "Gross Sales",
 				showInLegend: true,
 				dataPoints: trainer_gross
@@ -142,8 +213,8 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 			{
 				type: "column",
                 color: "gold",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				name: "Cash",
 				legendText: "Cash",
 				showInLegend: true,
@@ -152,8 +223,8 @@ var chart2 = new CanvasJS.Chart("chartContainer2", {
 			{
 				type: "column",
                 color: "#558C89",
-                indexLabelPlacement: "inside",
-                indexLabelFontColor: "white",
+                indexLabelPlacement: "outside",
+                indexLabelFontColor: "black",
 				name: "EFT",
 				legendText: "EFT",
 				showInLegend: true,
@@ -168,8 +239,8 @@ chart2.render();
 
 var chart3 = new CanvasJS.Chart("chartContainer3",
 	{
-		exportFileName: "Pie Chart",
-		exportEnabled: true,
+{#		exportFileName: "Pie Chart",#}
+{#		exportEnabled: true,#}
         animationEnabled: true,
 		legend:{
 			verticalAlign: "bottom",
@@ -254,12 +325,24 @@ chart4.render();
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="row">
+{#              <div class="col-md-12 col-sm-12 col-xs-12">#}
+{#                <div class="x_panel">#}
+{#                  <div class="x_title">#}
+{#                    <h2>Sales by Date</h2>#}
+{#                    <div class="clearfix"></div>#}
+{#                  </div>#}
+{#                  <div class="x_content">#}
+{#                    <div id="chartContainer0" style="height: 350px; width: 100%;" align="center"> </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -275,7 +358,7 @@ chart4.render();
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sales by Trainor/Sales Person</h2>
+                    <h2>Sales by Trainer/Sales Person</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -286,7 +369,7 @@ chart4.render();
             </div>
             <div class="clearfix"></div>
             <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Gross Sale by Sold Programs </h2>
@@ -298,17 +381,6 @@ chart4.render();
                 </div>
               </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Gross Sale by Client</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <div id="chartContainer4" style="height: 350px; width: 100%;" align="center"> </div>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -316,12 +388,12 @@ chart4.render();
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+{#        <footer>#}
+{#          <div class="pull-right">#}
+{#            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>#}
+{#          </div>#}
+{#          <div class="clearfix"></div>#}
+{#        </footer>#}
         <!-- /footer content -->
       </div>
     </div>

@@ -57,96 +57,18 @@
           </div>
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Sales by Lead Generation Source </h2>
-
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received and Net EFT added by each “lead generation source”.  </p>
-                    <table id="datatable" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                          <th>Lead Generation Source</th>
-                          <th>Gross Sale Amount</th>
-                          <th>Cash Received</th>
-                          <th>EFT Added</th>
-
-                        </tr>
-                      </thead>
-                        {% for request in sales_lead%}
-                       <tbody>
-                       <td> {{ request.lead  }}</td>
-                       <td> {{ request.gross.sales }}</td>
-                       <td> {{ request.cash.cash }}</td>
-                       <td> {{ request.eft.eft }}</td>
-
-{#                       <td> {{ request.cash_recieved }}</td>#}
-{#                       <td> {{ request.eft_added }}</td>#}
-{#                       <td> {{ request.eft_loss }}</td>#}
-{#                       <td> {{ request.daily_sales }}</td>#}
-
-
-                       {% endfor %}
-                       </tbody>
-
-                    </table>
-                  </div>
-                </div>
-              </div>
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sales by Trainer/Sales Person  </h2>
+                    <h2>Overall Month </h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received and Net EFT added by each sales person.  </p>
-                    <table id="datatable" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                          <th>Sold by</th>
-                          <th>Gross Sale Amount</th>
-                          <th>Cash Received</th>
-                          <th>EFT Added</th>
-
-                        </tr>
-                      </thead>
-                        {% for request in sales_trainer%}
-                       <tbody>
-                       <td> {{ request.trainer  }}</td>
-                       <td> {{ request.gross.sales }}</td>
-                       <td> {{ request.cash.cash }}</td>
-                       <td> {{ request.eft.eft }}</td>
-
-{#                       <td> {{ request.cash_recieved }}</td>#}
-{#                       <td> {{ request.eft_added }}</td>#}
-{#                       <td> {{ request.eft_loss }}</td>#}
-{#                       <td> {{ request.daily_sales }}</td>#}
-
-
-                       {% endfor %}
-                       </tbody>
-
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Sales by Client  </h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received and Net EFT added by each client.  </p>
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received, EFT added and loss by each client.  </p>#}
                     <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -154,6 +76,9 @@
                           <th>Gross Sale Amount</th>
                           <th>Cash Received</th>
                           <th>EFT Added</th>
+                          <th>EFT Loss</th>
+                          <th>Lead Source</th>
+                          <th>Programs</th>
 
                         </tr>
                       </thead>
@@ -162,13 +87,88 @@
                        <td> {{ request.client  }}</td>
                        <td> {{ request.gross.sales }}</td>
                        <td> {{ request.cash.cash }}</td>
-                       <td> {{ request.eft.eft }}</td>
+                       <td> {{ request.eft_added.eft_added }}</td>
+                       <td> {{ request.eft_loss.eft_loss }}</td>
+                       <td> {{ request.lead }}</td>
+                       <td> {{ request.program }}</td>
 
-{#                       <td> {{ request.cash_recieved }}</td>#}
-{#                       <td> {{ request.eft_added }}</td>#}
-{#                       <td> {{ request.eft_loss }}</td>#}
-{#                       <td> {{ request.daily_sales }}</td>#}
+                       {% endfor %}
+                       </tbody>
 
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>1st - 15th </h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received, EFT added and loss by each client.  </p>#}
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Client Name</th>
+                          <th>Gross Sale Amount</th>
+                          <th>Cash Received</th>
+                          <th>EFT Added</th>
+                          <th>EFT Loss</th>
+                          <th>Lead Source</th>
+                          <th>Programs</th>
+
+                        </tr>
+                      </thead>
+                        {% for request in sales_client_1%}
+                       <tbody>
+                       <td> {{ request.client  }}</td>
+                       <td> {{ request.gross.sales }}</td>
+                       <td> {{ request.cash.cash }}</td>
+                       <td> {{ request.eft_added.eft_added }}</td>
+                       <td> {{ request.eft_loss.eft_loss }}</td>
+                       <td> {{ request.lead }}</td>
+                       <td> {{ request.program }}</td>
+
+                       {% endfor %}
+                       </tbody>
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>16th - End of Month </h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+{#                    <p class="text-muted font-13 m-b-30"> The report shows the gross sale amount, cash received, EFT added and loss by each client.  </p>#}
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Client Name</th>
+                          <th>Gross Sale Amount</th>
+                          <th>Cash Received</th>
+                          <th>EFT Added</th>
+                          <th>EFT Loss</th>
+                          <th>Lead Source</th>
+                          <th>Programs</th>
+
+                        </tr>
+                      </thead>
+                        {% for request in sales_client_2%}
+                       <tbody>
+                       <td> {{ request.client  }}</td>
+                       <td> {{ request.gross.sales }}</td>
+                       <td> {{ request.cash.cash }}</td>
+                       <td> {{ request.eft_added.eft_added }}</td>
+                       <td> {{ request.eft_loss.eft_loss }}</td>
+                       <td> {{ request.lead }}</td>
+                       <td> {{ request.program }}</td>
 
                        {% endfor %}
                        </tbody>

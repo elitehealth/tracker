@@ -16,45 +16,62 @@
 window.onload = function () {
 
     var gross =[];
-    {% for request in sales_trainer %}
-        gross.push({label: '{{request.trainer}}', y: {{request.gross_gap}}});
+    {% for request in sales_sum %}
+        gross.push({label: 'Overall Month', y: {{request.gross_gap}},indexLabel: "${{request.gross_gap}}"});
+        gross.push({label: '1st-15th', y: {{request.gross_gap_1}},indexLabel: "${{request.gross_gap_1}}"});
+        gross.push({label: '16th - End of Month', y: {{request.gross_gap_2}},indexLabel: "${{request.gross_gap_2}}"});
     {% endfor %}
 
+
     var gross_kpi =[];
-    {% for request in sales_trainer %}
-        gross_kpi.push({label: '{{request.trainer}}', y: {{request.gross_speed_required}}});
+    {% for request in sales_sum %}
+        gross_kpi.push({label: 'Overall Month', y: {{request.gross_speed_required}},indexLabel: "${{request.gross_speed_required}}"});
+        gross_kpi.push({label: '1st-15th', y: {{request.gross_speed_required_1}},indexLabel: "${{request.gross_speed_required_1}}"});
+        gross_kpi.push({label: '16th - End of Month', y: {{request.gross_speed_required_2}},indexLabel: "${{request.gross_speed_required_2}}"});
     {% endfor %}
 
     var cash =[];
-    {% for request in sales_trainer %}
-        cash.push({label: '{{request.trainer}}', y: {{request.cash_gap}}});
+    {% for request in sales_sum %}
+        cash.push({label: 'Overall Month', y: {{request.cash_gap}},indexLabel: "${{request.cash_gap}}"});
+        cash.push({label: '1st-15th', y: {{request.cash_gap_1}},indexLabel: "${{request.cash_gap_1}}"});
+        cash.push({label: '16th - End of Month', y: {{request.cash_gap_2}},indexLabel: "${{request.cash_gap_2}}"});
     {% endfor %}
 
     var cash_kpi =[];
-    {% for request in sales_trainer %}
-        cash_kpi.push({label: '{{request.trainer}}', y: {{request.cash_speed_required}}});
+    {% for request in sales_sum %}
+        cash_kpi.push({label: 'Overall Month', y: {{request.cash_speed_required}},indexLabel: "${{request.cash_speed_required}}"});
+        cash_kpi.push({label: '1st-15th', y: {{request.cash_speed_required_1}},indexLabel: "${{request.cash_speed_required_1}}"});
+        cash_kpi.push({label: '16th - End of Month', y: {{request.cash_speed_required_2}},indexLabel: "${{request.cash_speed_required_2}}"});
     {% endfor %}
 
     var net_eft =[];
-    {% for request in sales_trainer %}
-        net_eft.push({label: '{{request.trainer}}', y: {{request.net_eft_gap}}});
+    {% for request in sales_sum %}
+        net_eft.push({label: 'Overall Month', y: {{request.net_eft_gap}},indexLabel: "${{request.net_eft_gap}}"});
+        net_eft.push({label: '1st-15th', y: {{request.net_eft_gap_1}},indexLabel: "${{request.net_eft_gap_1}}"});
+        net_eft.push({label: '16th - End of Month', y: {{request.net_eft_gap_2}},indexLabel: "${{request.net_eft_gap_2}}"});
     {% endfor %}
 
     var net_eft_kpi =[];
-    {% for request in sales_trainer %}
-        net_eft_kpi.push({label: '{{request.trainer}}', y: {{request.net_eft_speed_required}}});
+    {% for request in sales_sum %}
+        net_eft_kpi.push({label: 'Overall Month', y: {{request.net_eft_speed_required}},indexLabel: "${{request.net_eft_speed_required}}"});
+        net_eft_kpi.push({label: '1st-15th', y: {{request.net_eft_speed_required_1}},indexLabel: "${{request.net_eft_speed_required_1}}"});
+        net_eft_kpi.push({label: '16th - End of Month', y: {{request.net_eft_speed_required_2}},indexLabel: "${{request.net_eft_speed_required_2}}"});
     {% endfor %}
 
     var program =[];
-    {% for request in sales_trainer %}
-        program.push({label: '{{request.trainer}}', y: {{request.program_gap}}});
+    {% for request in sales_sum %}
+        program.push({label: 'Overall Month', y: {{request.programs_gap}},indexLabel: "{{request.programs_gap}}"});
+        program.push({label: '1st-15th', y: {{request.programs_gap_1}},indexLabel: "{{request.programs_gap_1}}"});
+        program.push({label: '16th - End of Month', y: {{request.programs_gap_2}},indexLabel: "{{request.programs_gap_2}}"});
     {% endfor %}
-
 
     var program_kpi =[];
-    {% for request in sales_trainer %}
-        program_kpi.push({label: '{{request.trainer}}', y: {{request.program_speed_required}}});
+    {% for request in sales_sum %}
+        program_kpi.push({label: 'Overall Month', y: {{request.programs_speed_required}},indexLabel: "{{request.programs_speed_required}}"});
+        program_kpi.push({label: '1st-15th', y: {{request.programs_speed_required_1}},indexLabel: "{{request.programs_speed_required_1}}"});
+        program_kpi.push({label: '16th - End of Month', y: {{request.programs_speed_required_2}},indexLabel: "{{request.programs_speed_required_2}}"});
     {% endfor %}
+
 
 
   var chart1 = new CanvasJS.Chart("chartContainer1",
@@ -139,7 +156,7 @@ window.onload = function () {
         toolTipContent: "Cash Recieved GAP: USD {y}",
         color: "#C1E1A6",
         indexLabelPlacement: "inside",
-        indexLabelFontColor: "white",
+        indexLabelFontColor: "black",
     	legendText: "Cash Recieved GAP",
 	    showInLegend: true,
         dataPoints: cash
@@ -216,7 +233,7 @@ window.onload = function () {
     {
 
       title:{
-        text: "Program Sold GAP"
+        text: "Total Programs Sold GAP"
 
       },
       toolTip:{
@@ -224,7 +241,7 @@ window.onload = function () {
       },
 
       axisY:{
-        title: "Program Sold GAP",
+        title: "Total Programs Sold GAP",
         includeZero: false,
         prefix : "Quantity",
         lineColor: "#369EAD"
@@ -239,7 +256,7 @@ window.onload = function () {
       },
       data: [{
         type: "column",
-        toolTipContent: "Program Sold GAP: {y}",
+        toolTipContent: "Total Programs Sold GAP: {y}",
         color: "#62C9C3",
         indexLabelPlacement: "inside",
         indexLabelFontColor: "white",
@@ -299,7 +316,7 @@ window.onload = function () {
         <div class="right_col" role="main">
           <div class="">
             <div class="clearfix">
-                <div class=""><h1>Reporting Date: {{ reporting_date }}</h1></div>
+                <div class=""><h1>Reporting Month: {{ reporting_date }}</h1></div>
             </div>
 
             <div class="clearfix"></div>
