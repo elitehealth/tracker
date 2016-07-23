@@ -2,46 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55e3979b-5095-4d15-921d-255f1b30f33f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/templates/index2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/forms.py" afterPath="$PROJECT_DIR$/appointment/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/models.py" afterPath="$PROJECT_DIR$/appointment/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/base.html" afterPath="$PROJECT_DIR$/appointment/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/appointment_chart.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/appointment_chart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/appointment_chart_info.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/appointment_chart_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/appointment_info.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/appointment_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/client_chart_info.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/client_chart_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/client_info.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/client_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/form_appointment.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/form_appointment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/navbar.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/templates/templates/table_appointment.html" afterPath="$PROJECT_DIR$/appointment/templates/templates/table_appointment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appointment/views.py" afterPath="$PROJECT_DIR$/appointment/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/models.py" afterPath="$PROJECT_DIR$/client/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/base.html" afterPath="$PROJECT_DIR$/client/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/client_chart.html" afterPath="$PROJECT_DIR$/client/templates/templates/client_chart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/index.html" afterPath="$PROJECT_DIR$/client/templates/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/navbar.html" afterPath="$PROJECT_DIR$/client/templates/templates/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/table_client.html" afterPath="$PROJECT_DIR$/client/templates/templates/table_client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views.py" afterPath="$PROJECT_DIR$/client/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/forms.py" afterPath="$PROJECT_DIR$/sales/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/models.py" afterPath="$PROJECT_DIR$/sales/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/base.html" afterPath="$PROJECT_DIR$/sales/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/client_chart_info.html" afterPath="$PROJECT_DIR$/client/templates/templates/client_chart_info.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/templates/form_client.html" afterPath="$PROJECT_DIR$/client/templates/templates/form_client.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/current_kpi.html" afterPath="$PROJECT_DIR$/sales/templates/templates/current_kpi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html" afterPath="$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/form_sales.html" afterPath="$PROJECT_DIR$/sales/templates/templates/form_sales.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/navbar.html" afterPath="$PROJECT_DIR$/sales/templates/templates/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_chart.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_chart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_chart_info.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_chart_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_info.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_kpi.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_kpi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart_info.html" afterPath="$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/table_kpi.html" afterPath="$PROJECT_DIR$/sales/templates/templates/table_kpi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/templates/templates/table_sales.html" afterPath="$PROJECT_DIR$/sales/templates/templates/table_sales.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sales/views.py" afterPath="$PROJECT_DIR$/sales/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/templates/base.html" afterPath="$PROJECT_DIR$/target/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/templates/templates/navbar.html" afterPath="$PROJECT_DIR$/target/templates/templates/navbar.html" />
     </list>
     <ignored path="Tracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +42,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sales/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.689655">
-              <caret line="545" column="41" selection-start-line="545" selection-start-column="41" selection-end-line="545" selection-end-column="41" />
+            <state vertical-scroll-proportion="-10.586206">
+              <caret line="1722" column="0" selection-start-line="1722" selection-start-column="0" selection-end-line="1722" selection-end-column="0" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <element signature="e#1335#1697#0" expanded="false" />
@@ -86,10 +52,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sales/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="current_kpi.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.9615384">
+              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form_client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/templates/form_client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="current_kpi_chart.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.65384614">
+              <caret line="302" column="22" selection-start-line="302" selection-start-column="22" selection-end-line="302" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/templates/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86629003">
+            <state vertical-scroll-proportion="-17.692308">
               <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -115,6 +121,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,11 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client_chart.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="client_chart.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/templates/templates/client_chart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7272727">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="2" selection-end-line="128" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.33266932">
+              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#h6#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -141,42 +157,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appointment/views.py">
+      <file leaf-file-name="client_chart_info.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/templates/client_chart_info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="106" column="24" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#1027#1401#0" expanded="false" />
-                <element signature="e#9395#10409#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appointment_chart.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appointment/templates/templates/appointment_chart.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.0">
-              <caret line="402" column="0" selection-start-line="380" selection-start-column="0" selection-end-line="402" selection-end-column="0" />
-              <folding>
-                <element signature="e#4180#5240#0#HTML" expanded="false" />
-                <element signature="e#5329#6388#0#HTML" expanded="false" />
-                <element signature="e#6477#7545#0#HTML" expanded="false" />
-                <element signature="e#7634#8692#0#HTML" expanded="false" />
-                <element signature="e#8781#9838#0#HTML" expanded="false" />
-                <element signature="e#9927#10993#0#HTML" expanded="false" />
-                <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#2;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-7.8461537">
+              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -197,8 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/target/views.py" />
-        <option value="$PROJECT_DIR$/target/urls.py" />
         <option value="$PROJECT_DIR$/mysite/urls.py" />
         <option value="$PROJECT_DIR$/target/templates/templates/form_goal.html" />
         <option value="$PROJECT_DIR$/sales/templates/base.html" />
@@ -233,7 +217,6 @@
         <option value="$PROJECT_DIR$/appointment/templates/templates/client_info.html" />
         <option value="$PROJECT_DIR$/client/templates/base.html" />
         <option value="$PROJECT_DIR$/target/models.py" />
-        <option value="$PROJECT_DIR$/sales/templates/templates/current_kpi.html" />
         <option value="$PROJECT_DIR$/sales/templates/templates/table_kpi.html" />
         <option value="$PROJECT_DIR$/client/templates/templates/table_client.html" />
         <option value="$PROJECT_DIR$/sales/templates/templates/table_sales.html" />
@@ -241,13 +224,16 @@
         <option value="$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html" />
         <option value="$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart.html" />
         <option value="$PROJECT_DIR$/client/templates/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/client/templates/templates/client_chart.html" />
         <option value="$PROJECT_DIR$/appointment/templates/templates/appointment_chart.html" />
         <option value="$PROJECT_DIR$/appointment/views.py" />
         <option value="$PROJECT_DIR$/client/templates/templates/index2.html" />
         <option value="$PROJECT_DIR$/client/views.py" />
-        <option value="$PROJECT_DIR$/sales/views.py" />
         <option value="$PROJECT_DIR$/client/templates/templates/index.html" />
+        <option value="$PROJECT_DIR$/sales/views.py" />
+        <option value="$PROJECT_DIR$/sales/templates/templates/current_kpi.html" />
+        <option value="$PROJECT_DIR$/client/templates/templates/form_client.html" />
+        <option value="$PROJECT_DIR$/client/templates/templates/client_chart_info.html" />
+        <option value="$PROJECT_DIR$/client/templates/templates/client_chart.html" />
       </list>
     </option>
   </component>
@@ -418,60 +404,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appointment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appointment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appointment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -834,27 +766,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/appointment/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.730769">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/templates/client_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sales/migrations/0012_auto_20160704_1648.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/templates/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8827586">
@@ -999,14 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1078,37 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24304268">
-          <caret line="394" column="31" selection-start-line="394" selection-start-column="31" selection-end-line="394" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#5;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tbody#2;n#table#0;n#div#1;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appointment/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1166,14 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35238096">
-          <caret line="164" column="23" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sales/templates/templates/sales_kpi_chart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.418182">
@@ -1187,7 +1051,7 @@
         <state vertical-scroll-proportion="-9.8">
           <caret line="66" column="84" selection-start-line="66" selection-start-column="84" selection-end-line="66" selection-end-column="84" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1208,17 +1072,6 @@
             <element signature="e#0#35#0" expanded="true" />
             <element signature="e#1027#1401#0" expanded="false" />
             <element signature="e#9395#10409#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/templates/client_chart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7272727">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="2" selection-end-line="128" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#h6#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1259,19 +1112,19 @@
             <element signature="e#4598#5656#0#HTML" expanded="false" />
             <element signature="e#5735#6792#0#HTML" expanded="false" />
             <element signature="e#6871#7937#0#HTML" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1287,20 +1140,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sales/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.689655">
-          <caret line="545" column="41" selection-start-line="545" selection-start-column="41" selection-end-line="545" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#1335#1697#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86629003">
+        <state vertical-scroll-proportion="-17.692308">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1321,6 +1163,76 @@
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sales/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.586206">
+          <caret line="1722" column="0" selection-start-line="1722" selection-start-column="0" selection-end-line="1722" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#1335#1697#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sales/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/templates/form_client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sales/templates/templates/current_kpi_chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65384614">
+          <caret line="302" column="22" selection-start-line="302" selection-start-column="22" selection-end-line="302" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/templates/client_chart_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/templates/client_chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33266932">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#h6#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -40,21 +40,21 @@
     <div class="container body">
       {% include 'templates/navbar.html'  %}
         <div class="right_col" role="main">
-          <div class="">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Date</h6>
-
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu fa-pull-left">
-                      {% for request in list_of_slicer %}
-                    <li> <a href="{% url 'sales_info' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>
-                      {% endfor %}
-                  </ul>
-                </li>
-                  </ul>
-          </div>
+{#          <div class="">#}
+{#              <ul class="nav navbar-nav navbar-right">#}
+{#                <li class="">#}
+{#                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">#}
+{#                     <i class="fa fa-calendar-check-o fa-3x"  aria-hidden="false"></i>  <h6 style="color: red"> Change Reporting Date</h6>#}
+{##}
+{#                  </a>#}
+{#                  <ul class="dropdown-menu dropdown-usermenu fa-pull-left">#}
+{#                      {% for request in list_of_slicer %}#}
+{#                    <li> <a href="{% url 'sales_info' slicer1=request.year slicer2=request.month %}"><h6>{{ request.filter }}</h6> </a></li>#}
+{#                      {% endfor %}#}
+{#                  </ul>#}
+{#                </li>#}
+{#                  </ul>#}
+{#          </div>#}
           <div class="">
             <div class="clearfix">
                 <div class=""><h1>Current Month: {{ reporting_date }}</h1></div>

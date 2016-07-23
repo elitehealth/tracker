@@ -1401,7 +1401,7 @@ def sales_current_kpi_table(request):
         print(sales_trainer)
         print(sales_sum)
         return render(request, 'templates/current_kpi.html', {'sales_dates': sales_dates,
-                                                               'reporting_date': repoting_date.strftime("%B, %y"),
+                                                               'reporting_date': repoting_date.strftime("%B, %Y"),
                                                               'sales_sum': sales_sum
                                                         })
 
@@ -1722,7 +1722,7 @@ def sales_current_kpi_chart(request):
             print('Error')
 
         return render(request, 'templates/current_kpi_chart.html', {'sales_dates': sales_dates,
-                                                               'reporting_date': repoting_date.strftime("%B, %y"),
+                                                               'reporting_date': repoting_date.strftime("%B, %Y"),
                                                               'sales_sum': sales_sum})
 
     else:
