@@ -79,7 +79,7 @@ window.onload = function () {
     {% for request in appointment %}
         request.push({label: 'Overall Month', y: {{request.requests.requests}}, indexLabel: '{{request.requests.requests}}'});
         request.push({label: '1st - 15th', y: {{request.requests_period_1}}, indexLabel: '{{request.requests_period_1}}'});
-        request.push({label: '16th - End of Month', y: {{request.requests_period_2}}, indexLabel: '${{request.requests_period_2}}'});
+        request.push({label: '16th - End of Month', y: {{request.requests_period_2}}, indexLabel: '{{request.requests_period_2}}'});
     {% endfor %}
 
 
@@ -87,14 +87,14 @@ window.onload = function () {
     {% for request in appointment %}
         request_kpi.push({label: 'Overall Month', y: {{request.requests_kpi}}, indexLabel: '{{request.requests_kpi}}'});
         request_kpi.push({label: '1st - 15th', y: {{request.requests_kpi_1}}, indexLabel: '{{request.requests_kpi_1}}'});
-        request_kpi.push({label: '16th - End of Month', y: {{request.requests_kpi_2}}, indexLabel: '${{request.requests_kpi_2}}'});
+        request_kpi.push({label: '16th - End of Month', y: {{request.requests_kpi_2}}, indexLabel: '{{request.requests_kpi_2}}'});
     {% endfor %}
 
     var scheduled =[];
     {% for request in appointment %}
         scheduled.push({label: 'Overall Month', y: {{request.scheduled.scheduled}}, indexLabel: '{{request.scheduled.scheduled}}'});
         scheduled.push({label: '1st - 15th', y: {{request.scheduled_period_1}}, indexLabel: '{{request.scheduled_period_1}}'});
-        scheduled.push({label: '16th - End of Month', y: {{request.scheduled_period_2}}, indexLabel: '${{request.scheduled_period_2}}'});
+        scheduled.push({label: '16th - End of Month', y: {{request.scheduled_period_2}}, indexLabel: '{{request.scheduled_period_2}}'});
     {% endfor %}
 
 
@@ -102,14 +102,14 @@ window.onload = function () {
     {% for request in appointment %}
         scheduled_kpi.push({label: 'Overall Month', y: {{request.scheduled_kpi}}, indexLabel: '{{request.scheduled_kpi}}%'});
         scheduled_kpi.push({label: '1st - 15th', y: {{request.scheduled_kpi_1}}, indexLabel: '{{request.scheduled_kpi_1}}%'});
-        scheduled_kpi.push({label: '16th - End of Month', y: {{request.scheduled_kpi_2}}, indexLabel: '${{request.scheduled_kpi_2}}%'});
+        scheduled_kpi.push({label: '16th - End of Month', y: {{request.scheduled_kpi_2}}, indexLabel: '{{request.scheduled_kpi_2}}%'});
     {% endfor %}
 
     var attended =[];
     {% for request in appointment %}
         attended.push({label: 'Overall Month', y: {{request.attended.attended}}, indexLabel: '{{request.attended.attended}}'});
         attended.push({label: '1st - 15th', y: {{request.attended_period_1}}, indexLabel: '{{request.attended_period_1}}'});
-        attended.push({label: '16th - End of Month', y: {{request.attended_period_2}}, indexLabel: '${{request.attended_period_2}}'});
+        attended.push({label: '16th - End of Month', y: {{request.attended_period_2}}, indexLabel: '{{request.attended_period_2}}'});
     {% endfor %}
 
 
@@ -117,7 +117,7 @@ window.onload = function () {
     {% for request in appointment %}
         attended_kpi.push({label: 'Overall Month', y: {{request.attended_kpi}}, indexLabel: '{{request.attended_kpi}}%'});
         attended_kpi.push({label: '1st - 15th', y: {{request.attended_kpi_1}}, indexLabel: '{{request.attended_kpi_1}}%'});
-        attended_kpi.push({label: '16th - End of Month', y: {{request.attended_kpi_2}}, indexLabel: '${{request.attended_kpi_2}}%'});
+        attended_kpi.push({label: '16th - End of Month', y: {{request.attended_kpi_2}}, indexLabel: '{{request.attended_kpi_2}}%'});
     {% endfor %}
 
 
